@@ -156,7 +156,6 @@ export default function Navbar() {
             background-color: rgba(255,255,255,0.08) !important;
             border-top: none !important;
             margin-top: 10px;
-            display: block !important;
           }
           .dropdown-item {
             color: rgba(255,255,255,0.8) !important;

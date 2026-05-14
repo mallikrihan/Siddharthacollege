@@ -106,9 +106,10 @@ function HomePage() {
         <p style={{ fontSize: '18px', marginBottom: '30px', opacity: 0.9 }}>
           Admissions are now open for the academic year 2026-27. Secure your future today.
         </p>
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }} className="mobile-stack">
+        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }} className="cta-buttons-container">
           <button 
             onClick={() => navigate('/apply')}
+            className="cta-btn"
             style={{
               backgroundColor: THEME.primary,
               color: '#fff',
@@ -128,6 +129,7 @@ function HomePage() {
               const element = document.getElementById('contact');
               if (element) element.scrollIntoView({ behavior: 'smooth' });
             }}
+            className="cta-btn"
             style={{
               backgroundColor: '#ffffff',
               color: THEME.primary,
@@ -153,29 +155,55 @@ function HomePage() {
           <div style={{ width: '60px', height: '3px', backgroundColor: THEME.accent, margin: '20px auto' }}></div>
         </div>
 
-        <div style={contactGridStyle}>
-          <div style={contactCardStyle}>
+        <div style={contactGridStyle} className="responsive-grid-4">
+          <div style={contactCardStyle} className="contact-card">
             <div style={{ color: THEME.accent }}><Phone size={30} /></div>
             <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Phone</h4>
             <p style={{ color: '#666' }}>{CONTACT.phone}</p>
           </div>
-          <div style={contactCardStyle}>
+          <div style={contactCardStyle} className="contact-card">
             <div style={{ color: THEME.accent }}><Mail size={30} /></div>
             <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Email</h4>
             <p style={{ color: '#666' }}>{CONTACT.email}</p>
           </div>
-          <div style={contactCardStyle}>
+          <div style={contactCardStyle} className="contact-card">
             <div style={{ color: THEME.accent }}><MapPin size={30} /></div>
             <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Address</h4>
             <p style={{ color: '#666' }}>{CONTACT.address}</p>
           </div>
-          <div style={contactCardStyle}>
+          <div style={contactCardStyle} className="contact-card">
             <div style={{ color: THEME.accent }}><Clock size={30} /></div>
             <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Hours</h4>
             <p style={{ color: '#666' }}>{CONTACT.hours}</p>
           </div>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 600px) {
+          #contact .responsive-grid-4 { 
+            grid-template-columns: 1fr 1fr !important; 
+            display: grid !important;
+            gap: 10px !important; 
+          }
+          .contact-card { padding: 12px 5px !important; gap: 5px !important; }
+          .contact-card svg { width: 18px !important; height: 18px !important; }
+          .contact-card h4 { font-size: 12px !important; margin: 0 !important; }
+          .contact-card p { font-size: 10px !important; margin: 0 !important; line-height: 1.2 !important; }
+          
+          .cta-buttons-container { 
+            flex-direction: row !important; 
+            gap: 10px !important; 
+            flex-wrap: nowrap !important;
+          }
+          .cta-btn { 
+            padding: 10px 12px !important; 
+            font-size: 11px !important; 
+            flex: 1 !important;
+            white-space: nowrap !important;
+          }
+        }
+      `}</style>
 
     </>
   );
