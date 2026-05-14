@@ -197,10 +197,10 @@ function HomePage() {
             flex-wrap: nowrap !important;
           }
           .cta-btn { 
-            padding: 10px 12px !important; 
-            font-size: 11px !important; 
-            flex: 1 !important;
+            padding: 8px 15px !important; 
+            font-size: 10px !important; 
             white-space: nowrap !important;
+            letter-spacing: 0 !important;
           }
         }
       `}</style>
