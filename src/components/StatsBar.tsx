@@ -55,7 +55,7 @@ export default function StatsBar() {
 
   return (
     <div style={sectionStyle}>
-      <div style={containerStyle}>
+      <div style={containerStyle} className="responsive-grid-4">
         {STATS.map((stat, idx) => (
           <React.Fragment key={idx}>
             <div style={statItemStyle}>

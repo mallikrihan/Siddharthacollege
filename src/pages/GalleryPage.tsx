@@ -36,14 +36,14 @@ export default function GalleryPage() {
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 20px' }}>
-        {/* Filter Bar */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginBottom: '50px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '40px', flexWrap: 'wrap' }} className="gallery-filters">
           {CATEGORIES.map(cat => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
+              className="filter-btn"
               style={{
-                padding: '10px 25px',
+                padding: '8px 20px',
                 borderRadius: '30px',
                 border: `2px solid ${filter === cat ? THEME.accent : THEME.border}`,
                 backgroundColor: filter === cat ? THEME.accent : THEME.white,
@@ -53,14 +53,21 @@ export default function GalleryPage() {
                 transition: '0.3s',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '8px',
+                fontSize: '14px'
               }}
             >
-              {cat === 'All' && <Filter size={16} />}
+              {cat === 'All' && <Filter size={14} />}
               {cat}
             </button>
           ))}
         </div>
+        <style>{`
+          @media (max-width: 600px) {
+            .gallery-filters { gap: 8px !important; }
+            .filter-btn { padding: 6px 15px !important; font-size: 12px !important; }
+          }
+        `}</style>
 
         {/* Gallery Grid */}
         <motion.div
@@ -70,6 +77,7 @@ export default function GalleryPage() {
             gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
             gap: '30px'
           }}
+          className="responsive-grid-3"
         >
           <AnimatePresence mode='popLayout'>
             {filteredImages.map(img => (

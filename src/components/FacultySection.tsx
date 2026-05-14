@@ -54,7 +54,7 @@ export default function FacultySection() {
           <h2 style={{ fontSize: '36px', color: THEME.primary, fontFamily: 'Georgia, serif', marginTop: '10px' }}>Popular Faculty Areas of Study</h2>
         </div>
 
-        <div style={gridStyle}>
+        <div style={gridStyle} className="responsive-grid-4">
           {SUBJECTS.map((sub, idx) => (
             <motion.div
               key={idx}

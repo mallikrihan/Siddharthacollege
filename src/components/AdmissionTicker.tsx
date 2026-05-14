@@ -42,11 +42,14 @@ export default function AdmissionTicker() {
           0% { transform: translateX(100%); }
           100% { transform: translateX(-100%); }
         }
+        @media (max-width: 600px) {
+          .ticker-label { display: none !important; }
+        }
       `}</style>
       
-      <div style={labelStyle}>ANNUNCIATIONS</div>
+      <div style={labelStyle} className="ticker-label">ANNOUNCEMENTS</div>
       
-      <div style={tickerStyle}>
+      <div style={{ ...tickerStyle, paddingLeft: '20px' }}>
         <span>Admissions Open for Year 2026-27: Pre-Primary (LKG & UKG)</span>
         <span>•</span>
         <span>Primary School Grades 1-7 (Holistic Child Development)</span>
@@ -61,6 +64,18 @@ export default function AdmissionTicker() {
         <span>•</span>
         <span>Contact: 8073799243 for more details.</span>
       </div>
+      
+      {/* Edge Fades */}
+      <div style={{
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        bottom: 0,
+        width: '50px',
+        background: `linear-gradient(to right, transparent, ${THEME.accent})`,
+        zIndex: 1,
+        pointerEvents: 'none'
+      }} />
     </div>
   );
 }

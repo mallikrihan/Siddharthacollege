@@ -97,7 +97,7 @@ export default function AdmissionsSection() {
           <div style={{ width: '60px', height: '3px', backgroundColor: THEME.accent, margin: '20px auto' }}></div>
         </div>
 
-        <div style={gridStyle}>
+        <div style={gridStyle} className="responsive-grid-3">
           {PROGRAMS.map((prog, idx) => (
             <motion.div
               key={idx}

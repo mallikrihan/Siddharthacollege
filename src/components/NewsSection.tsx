@@ -48,8 +48,8 @@ export default function NewsSection() {
         <div>
           {NEWS.map((item, idx) => (
             <div key={idx} style={itemStyle} className="news-item">
-              <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-                <div style={{ color: '#888', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', width: '120px' }}>
+              <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }} className="news-item-content">
+                <div style={{ color: '#888', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', width: '120px' }} className="news-date">
                   <Calendar size={16} /> {item.date}
                 </div>
                 <div style={{
@@ -65,10 +65,16 @@ export default function NewsSection() {
                 </div>
                 <h4 style={{ color: THEME.primary, fontSize: '18px', fontWeight: 600 }}>{item.title}</h4>
               </div>
-              <a href="#" style={{ color: THEME.primary }}><ExternalLink size={20} /></a>
+              <a href="#" style={{ color: THEME.primary }} className="hide-mobile"><ExternalLink size={20} /></a>
             </div>
           ))}
         </div>
+        <style>{`
+          @media (max-width: 768px) {
+            .news-item-content { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+            .news-date { width: auto !important; }
+          }
+        `}</style>
       </div>
     </section>
   );

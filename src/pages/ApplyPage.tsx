@@ -83,7 +83,8 @@ export default function ApplyPage() {
     gap: '10px',
     border: 'none',
     cursor: 'pointer',
-    fontSize: '16px'
+    fontSize: '16px',
+    transition: '0.3s'
   };
 
   const sectionTitleStyle: React.CSSProperties = {
@@ -98,6 +99,13 @@ export default function ApplyPage() {
 
   return (
     <div style={{ backgroundColor: THEME.lightBg, minHeight: '100vh' }}>
+      <style>{`
+        .apply-btn:hover {
+          filter: brightness(1.1);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+      `}</style>
       {/* Page Header */}
       <div style={{ backgroundColor: THEME.primary, color: 'white', padding: '60px 20px', textAlign: 'center' }}>
         <h1 style={{ fontSize: '48px', fontFamily: 'Georgia, serif', marginBottom: '10px' }}>Apply & Admissions</h1>
@@ -134,17 +142,17 @@ export default function ApplyPage() {
                 <span><strong>Step 3:</strong> Submit the application at our campus office.</span>
               </li>
             </ul>
-            <button style={{ ...btnStyle, marginTop: '30px' }} onClick={() => alert('Online application portal coming soon!')}>
+            <button className="apply-btn" style={{ ...btnStyle, marginTop: '30px' }} onClick={() => alert('Online application portal coming soon!')}>
               <FileText size={20} /> Apply Online Now
             </button>
           </div>
 
           <div style={{ flex: '1 1 300px', backgroundColor: THEME.white, padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
             <h3 style={{ fontSize: '22px', color: THEME.primary, fontWeight: 'bold' }}>Important Documents</h3>
-            <button style={btnStyle}>
+            <button className="apply-btn" style={btnStyle}>
               <Download size={20} /> Download Admission Form
             </button>
-            <button style={{ ...btnStyle, backgroundColor: THEME.accent }}>
+            <button className="apply-btn" style={{ ...btnStyle, backgroundColor: THEME.accent }}>
               <Download size={20} /> Download Brochure
             </button>
           </div>

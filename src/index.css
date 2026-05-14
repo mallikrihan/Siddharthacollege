@@ -7,3 +7,40 @@ html {
 [id] {
   scroll-margin-top: 150px;
 }
+
+/* Responsive Grid Overrides */
+@media (max-width: 992px) {
+  .responsive-grid-4, .responsive-grid-3, .responsive-grid-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .responsive-grid-4, .responsive-grid-3, .responsive-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  /* Global Responsive Overrides */
+  h1 { font-size: 32px !important; line-height: 1.2 !important; }
+  h2 { font-size: 28px !important; line-height: 1.2 !important; }
+  h3 { font-size: 22px !important; }
+  
+  section { padding: 50px 0 !important; }
+  .container-padding { padding: 0 20px !important; }
+}
+
+/* Fix for horizontal overflow */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}

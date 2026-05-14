@@ -5,24 +5,24 @@ import { Plus, Minus } from 'lucide-react';
 
 const FAQS = [
   {
-    q: 'What programs does Siddhartha PU College offer?',
-    a: 'Siddhartha PU College offers education from LKG to degree courses, including PUC Science, PUC Commerce, B.Com, and B.Sc, ensuring holistic development and academic excellence.'
+    q: 'What programs does Siddhartha Institution offer?',
+    a: 'We offer education from Pre-Primary to Degree courses, including PUC Science, PUC Commerce, B.Com, and B.Sc, ensuring holistic development and academic excellence across all levels.'
   },
   {
-    q: 'Are scholarships available for students.',
-    a: 'Yes, Siddhartha PU College provides access to government scholarships like the National Scholarship Portal (NSP) and State Scholarship Portal (SSP), supporting students based on merit and financial need.'
+    q: 'Are scholarships available for students?',
+    a: 'Yes, our students have access to various government scholarships like the National Scholarship Portal (NSP) and State Scholarship Portal (SSP). We provide full administrative support for the application process.'
   },
   {
-    q: 'How can i apply to siddingrtha college?',
-    a: 'Fill the online form, submit documents. Contact: 8073799243 | siddhartha.puc.bhatkal@gmail.com'
+    q: 'How can I apply to Siddhartha Institution?',
+    a: 'You can download the application form from our website or collect it from the campus office. Complete the form, attach required documents, and submit it. For assistance, contact: 8073799243.'
   },
   {
     q: 'What is the student-to-faculty ratio?',
-    a: 'We maintain a favorable student-to-faculty ratio, ensuring personalized attention, collaborative learning, and a commitment to academic excellence.'
+    a: 'We maintain a favorable student-to-faculty ratio to ensure personalized attention, collaborative learning, and high academic standards for every student.'
   },
   {
     q: 'Are there extracurricular activities?',
-    a: 'Yes! We offer sports, cultural events, student clubs, and leadership roles to support holistic growth and life skill development.'
+    a: 'Absolutely! We offer a wide range of sports, cultural events, student clubs, and leadership opportunities to support holistic growth and life skill development.'
   }
 ];
 ``

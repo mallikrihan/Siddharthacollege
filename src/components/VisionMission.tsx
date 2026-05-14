@@ -10,18 +10,19 @@ export default function VisionMission() {
   const containerStyle: React.CSSProperties = {
     maxWidth: '1200px',
     margin: '0 auto',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    display: 'flex',
+    flexWrap: 'wrap',
     gap: '40px',
     padding: '0 20px',
   };
 
   const boxStyle: React.CSSProperties = {
     backgroundColor: THEME.white,
-    padding: '50px',
+    padding: '40px',
     borderRadius: '4px',
     boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
     borderTop: `4px solid ${THEME.accent}`,
+    flex: '1 1 450px', // Allow boxes to shrink but not smaller than 450px before stacking
   };
 
   const titleStyle: React.CSSProperties = {
@@ -40,15 +41,20 @@ export default function VisionMission() {
 
   return (
     <div style={sectionStyle} id="vision-mission">
-      <div style={containerStyle}>
-        <div style={boxStyle}>
+      <style>{`
+        @media (max-width: 600px) {
+          .vision-box { padding: 25px !important; }
+        }
+      `}</style>
+      <div style={containerStyle} className="mobile-stack">
+        <div style={boxStyle} className="vision-box">
           <h2 style={titleStyle}>Our Vision</h2>
           <p style={{ color: '#555', lineHeight: 1.8, fontSize: '16px' }}>
             To inspire and empower young minds to excel academically, develop a strong moral compass, and contribute meaningfully to society as responsible global citizens.
           </p>
         </div>
 
-        <div style={boxStyle}>
+        <div style={boxStyle} className="vision-box">
           <h2 style={titleStyle}>Our Mission</h2>
           <ul style={listStyle}>
             <li>To provide a dynamic and student-centered learning environment that fosters intellectual growth and creativity.</li>

@@ -106,7 +106,7 @@ function HomePage() {
         <p style={{ fontSize: '18px', marginBottom: '30px', opacity: 0.9 }}>
           Admissions are now open for the academic year 2026-27. Secure your future today.
         </p>
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }} className="mobile-stack">
           <button 
             onClick={() => navigate('/apply')}
             style={{

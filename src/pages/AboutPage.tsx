@@ -85,7 +85,7 @@ export default function AboutPage() {
 
       {/* Leadership Messages */}
       <section style={{ padding: '80px 20px', backgroundColor: THEME.white }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }} className="responsive-grid-2">
           <div id="founder" style={cardStyle}>
             <Quote size={40} color={THEME.accent} style={{ marginBottom: '20px', opacity: 0.3 }} />
             <h2 style={{ fontSize: '28px', color: THEME.primary, marginBottom: '15px' }}>Founder's Message</h2>
@@ -109,7 +109,7 @@ export default function AboutPage() {
       <section id="facilities" style={{ padding: '80px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={sectionTitleStyle}>World-Class Facilities</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }} className="responsive-grid-3">
             {FACILITIES.map((f, i) => (
               <motion.div key={i} whileHover={{ y: -5 }} style={cardStyle}>
                 <div style={{ color: THEME.accent, marginBottom: '15px' }}>{f.icon}</div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
       <section id="achievements" style={{ padding: '80px 20px', backgroundColor: THEME.primary, color: 'white' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ ...sectionTitleStyle, color: 'white' }}>Our Proud Achievements</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }} className="responsive-grid-3">
             {ACHIEVEMENTS.map((a, i) => (
               <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '30px', borderRadius: '8px', textAlign: 'center' }}>
                 <Trophy size={40} color={THEME.accent} style={{ marginBottom: '20px' }} />

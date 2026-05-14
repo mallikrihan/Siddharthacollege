@@ -36,7 +36,7 @@ export default function TopBar() {
   };
 
   return (
-    <div style={barStyle}>
+    <div style={barStyle} className="top-bar-root">
       <div style={itemStyle}>
         <a href={`tel:${CONTACT.phone}`} style={iconTextStyle}>
           <Phone size={14} color={THEME.accent} /> {CONTACT.phone}
@@ -58,6 +58,9 @@ export default function TopBar() {
         .social-icon:hover {
           color: ${THEME.accent} !important;
           transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+          .top-bar-root { display: none !important; }
         }
       `}</style>
     </div>

@@ -124,8 +124,51 @@ export default function Navbar() {
           background-color: #f8f9fa;
           color: ${THEME.accent} !important;
         }
-        @media (max-width: 768px) {
-          .nav-row-2 { display: ${mobileMenuOpen ? 'block' : 'none'} !important; }
+        @media (max-width: 992px) {
+          .mobile-toggle { display: block !important; }
+          .nav-row-2 { 
+            display: ${mobileMenuOpen ? 'block' : 'none'} !important; 
+            background-color: ${THEME.primary};
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+          }
+          .nav-list { 
+            flex-direction: column !important; 
+            padding: 20px !important;
+          }
+          .nav-item { 
+            padding: 10px 0 !important; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+          }
+          .nav-link {
+            color: white !important;
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .nav-dropdown {
+            position: static !important;
+            box-shadow: none !important;
+            background-color: rgba(255,255,255,0.08) !important;
+            border-top: none !important;
+            margin-top: 10px;
+            display: block !important;
+          }
+          .dropdown-item {
+            color: rgba(255,255,255,0.8) !important;
+            padding: 12px 25px !important;
+            font-size: 14px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .logo-text-main { font-size: 18px !important; }
+          .logo-text-sub { font-size: 10px !important; letter-spacing: 1px !important; }
+          .navbar-row-1 { padding: 10px 20px !important; }
+          .cta-btn-nav { padding: 6px 12px !important; font-size: 11px !important; }
         }
       `}</style>
 
@@ -135,14 +178,14 @@ export default function Navbar() {
             <GraduationCap size={40} color={THEME.white} />
           </div>
           <div style={logoTextStyle}>
-            <span style={{ fontSize: '24px', fontWeight: 'bold', lineHeight: 1.1 }}>SIDDHARTHA</span>
-            <span style={{ fontSize: '14px', letterSpacing: '2px' }}>INSTITUTION BHATKAL</span>
+            <span className="logo-text-main" style={{ fontSize: '24px', fontWeight: 'bold', lineHeight: 1.1 }}>SIDDHARTHA</span>
+            <span className="logo-text-sub" style={{ fontSize: '14px', letterSpacing: '2px' }}>INSTITUTION BHATKAL</span>
           </div>
         </Link>
-        
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <Link to="/apply" style={ctaButtonStyle}>Apply Now</Link>
-          <button 
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }} className="navbar-row-1">
+          <Link to="/apply" style={ctaButtonStyle} className="cta-btn-nav">Apply Now</Link>
+          <button
             style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', color: THEME.primary }}
             className="mobile-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -153,13 +196,13 @@ export default function Navbar() {
       </div>
 
       <div style={row2Style} className="nav-row-2">
-        <ul style={navListStyle}>
+        <ul style={navListStyle} className="nav-list">
           {NAVIGATION.map((item, idx) => (
             <li key={idx} className="nav-item" style={navItemStyle}>
               {item.link.startsWith('/#') ? (
-                <a 
-                  href={item.link} 
-                  className="nav-link" 
+                <a
+                  href={item.link}
+                  className="nav-link"
                   style={navLinkStyle}
                   onClick={(e) => handleNavClick(e, item, idx)}
                 >
@@ -167,9 +210,9 @@ export default function Navbar() {
                   {item.dropdown && <ChevronDown size={14} />}
                 </a>
               ) : (
-                <Link 
-                  to={item.link} 
-                  className="nav-link" 
+                <Link
+                  to={item.link}
+                  className="nav-link"
                   style={navLinkStyle}
                   onClick={(e) => {
                     if (item.name === 'Home' && location.pathname === '/') {
@@ -182,15 +225,15 @@ export default function Navbar() {
                   {item.dropdown && <ChevronDown size={14} />}
                 </Link>
               )}
-              
+
               {item.dropdown && (
                 <ul className="nav-dropdown" style={dropdownStyle(activeDropdown === idx)}>
                   {item.dropdown.map((sub, sidx) => (
                     <li key={sidx}>
                       {sub.link.startsWith('/#') ? (
-                        <a 
-                          href={sub.link} 
-                          className="dropdown-item" 
+                        <a
+                          href={sub.link}
+                          className="dropdown-item"
                           style={{
                             display: 'block',
                             padding: '10px 20px',
@@ -207,9 +250,9 @@ export default function Navbar() {
                           {sub.name}
                         </a>
                       ) : (
-                        <Link 
-                          to={sub.link} 
-                          className="dropdown-item" 
+                        <Link
+                          to={sub.link}
+                          className="dropdown-item"
                           style={{
                             display: 'block',
                             padding: '10px 20px',

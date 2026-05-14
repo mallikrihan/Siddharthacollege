@@ -65,7 +65,7 @@ export default function AboutSection() {
 
   return (
     <section style={sectionStyle} id="about">
-      <div style={containerStyle}>
+      <div style={containerStyle} className="mobile-stack">
         <div style={contentStyle}>
           <div style={headingStyle}>Welcome to Excellence</div>
           <h2 style={titleStyle}>Siddhartha Institution Bhatkal</h2>

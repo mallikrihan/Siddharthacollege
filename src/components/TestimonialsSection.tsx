@@ -64,7 +64,7 @@ export default function TestimonialsSection() {
           <h2 style={{ fontSize: '36px', color: THEME.primary, fontFamily: 'Georgia, serif', marginTop: '10px' }}>What Our Students Say</h2>
         </div>
 
-        <div style={gridStyle}>
+        <div style={gridStyle} className="responsive-grid-3">
           {TESTIMONIALS.map((t, idx) => (
             <div key={idx} style={cardStyle}>
               <div style={quoteIconStyle}><Quote size={40} /></div>

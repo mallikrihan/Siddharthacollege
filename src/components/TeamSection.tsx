@@ -63,14 +63,27 @@ export default function TeamSection() {
           <div style={{ width: '60px', height: '3px', backgroundColor: THEME.accent, margin: '20px auto' }}></div>
         </div>
 
-        <div style={gridStyle}>
+        <div style={gridStyle} className="responsive-grid-3">
           {TEAM.map((member, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -10 }}
               style={cardStyle}
             >
-              <img src={member.image} alt={member.name} style={{ width: '100%', height: '350px', objectFit: 'cover' }} />
+              <div style={{ height: '400px', overflow: 'hidden' }}>
+                <motion.img 
+                  whileHover={{ scale: 1.05 }}
+                  src={member.image} 
+                  alt={member.name} 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    objectPosition: 'center top',
+                    transition: '0.5s'
+                  }} 
+                />
+              </div>
               <div style={infoStyle}>
                 <h3 style={{ fontSize: '22px', color: THEME.primary, fontWeight: 'bold', marginBottom: '5px' }}>{member.name}</h3>
                 <p style={{ color: THEME.accent, fontWeight: 600, fontSize: '14px', marginBottom: '20px' }}>{member.role}</p>

@@ -68,7 +68,7 @@ export default function Footer() {
 
   return (
     <footer style={footerStyle}>
-      <div style={containerStyle}>
+      <div style={containerStyle} className="responsive-grid-4">
         {/* Column 1 */}
         <div>
           <h3 style={titleStyle}>

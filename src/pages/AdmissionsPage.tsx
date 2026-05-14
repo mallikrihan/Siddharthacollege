@@ -20,6 +20,7 @@ export default function AdmissionsPage() {
         <p style={{ color: '#666', marginBottom: '30px', fontSize: '18px' }}>Join our community of achievers and shape your future.</p>
         <a 
           href="/apply" 
+          className="cta-btn-hover"
           style={{ 
             backgroundColor: THEME.accent, 
             color: 'white', 
@@ -28,11 +29,19 @@ export default function AdmissionsPage() {
             textDecoration: 'none', 
             fontWeight: 'bold', 
             fontSize: '18px',
-            display: 'inline-block'
+            display: 'inline-block',
+            transition: '0.3s'
           }}
         >
           Apply Online Now
         </a>
+        <style>{`
+          .cta-btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+            filter: brightness(1.1);
+          }
+        `}</style>
       </div>
     </div>
   );

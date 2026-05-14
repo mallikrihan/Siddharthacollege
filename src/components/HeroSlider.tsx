@@ -110,7 +110,15 @@ export default function HeroSlider() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className="hero-container">
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-container { height: 450px !important; }
+          .hero-title { font-size: 32px !important; }
+          .hero-subtitle { font-size: 15px !important; margin-bottom: 25px !important; }
+          .hover-arrow { display: none !important; }
+        }
+      `}</style>
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -127,6 +135,7 @@ export default function HeroSlider() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
               style={{ fontSize: '64px', margin: '0 0 20px 0', fontFamily: 'Georgia, serif', fontWeight: 'bold' }}
+              className="hero-title"
             >
               {SLIDES[current].title}
             </motion.h1>
@@ -135,6 +144,7 @@ export default function HeroSlider() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               style={{ fontSize: '20px', marginBottom: '40px', lineHeight: 1.5 }}
+              className="hero-subtitle"
             >
               {SLIDES[current].subtitle}
             </motion.p>

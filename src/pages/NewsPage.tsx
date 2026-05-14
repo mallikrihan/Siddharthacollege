@@ -86,7 +86,7 @@ export default function NewsPage() {
           <h2 style={{ fontSize: '28px', color: THEME.primary, margin: 0 }}>Latest Bulletins</h2>
         </div>
 
-        <div style={newsGridStyle}>
+        <div style={newsGridStyle} className="responsive-grid-3">
           {EXTENDED_NEWS.map((news) => (
             <motion.div
               key={news.id}
@@ -165,7 +165,7 @@ export default function NewsPage() {
         <p style={{ color: '#666', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 30px' }}>
           Never miss an update. Receive the latest news and announcements directly in your inbox.
         </p>
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', maxWidth: '500px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', maxWidth: '500px', margin: '0 auto' }} className="mobile-stack">
           <input
             type="email"
             placeholder="Your Email Address"
