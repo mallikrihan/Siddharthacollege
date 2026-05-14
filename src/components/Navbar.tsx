@@ -167,7 +167,7 @@ export default function Navbar() {
           .logo-text-main { font-size: 18px !important; }
           .logo-text-sub { font-size: 10px !important; letter-spacing: 1px !important; }
           .navbar-row-1 { padding: 10px 20px !important; }
-          .cta-btn-nav { padding: 6px 12px !important; font-size: 11px !important; }
+          .cta-btn-nav { display: none !important; }
         }
       `}</style>
 
