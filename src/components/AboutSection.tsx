@@ -102,7 +102,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800&h=600"
+              src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092008-1024x473.jpg"
               alt="Institution Building"
               style={{ width: '100%', borderRadius: '8px', boxShadow: '20px 20px 0px ' + THEME.lightBg }}
             />

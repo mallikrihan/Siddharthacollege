@@ -12,19 +12,19 @@ const SLIDES = [
     cta: 'Explore Programs'
   },
   {
-    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_091627-1536x710.jpg',
+    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg',
     title: 'Modern Infrastructure',
     subtitle: 'State-of-the-art facilities designed to provide a world-class learning environment.',
     cta: 'Our Campus'
   },
   {
-    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092924-2048x946.jpg',
+    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_091627-1536x710.jpg',
     title: 'Scientific Curiosity',
     subtitle: 'Encouraging innovation and exploration in our advanced science laboratories.',
     cta: 'View Labs'
   },
   {
-    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_093259-2048x946.jpg',
+    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg',
     title: 'Success & Beyond',
     subtitle: 'Preparing students for top-tier higher education and professional career paths.',
     cta: 'Admission 2026-27'

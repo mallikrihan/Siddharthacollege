@@ -4,53 +4,53 @@ import { motion } from 'motion/react';
 import { Calendar, Tag, ChevronRight, Newspaper, Bell } from 'lucide-react';
 
 const EXTENDED_NEWS = [
-  { 
+  {
     id: 1,
-    date: 'May 10, 2026', 
-    title: 'Top Scorer in PUC Board Exams 2025 Recognized', 
+    date: 'May 10, 2026',
+    title: 'Top Scorer in PUC Board Exams 2025 Recognized',
     category: 'Award',
     desc: 'Our student Medha G Hegde secured top marks in the district, bringing pride to the institution. A special felicitation ceremony was held today.',
-    image: 'https://images.unsplash.com/photo-1523240715639-6f0607196b7a?auto=format&fit=crop&q=80&w=800'
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Uf_TSl_PqVeCNfMX-0_0SaFV76FgNrtiQQ&s'
   },
-  { 
+  {
     id: 2,
-    date: 'Apr 25, 2026', 
-    title: 'Annual Cultural Fest "Siddhartha Taranga" Dates Announced', 
+    date: 'Apr 25, 2026',
+    title: 'Annual Cultural Fest "Siddhartha Taranga" Dates Announced',
     category: 'Event',
     desc: 'Get ready for three days of music, dance, and art. The much-awaited cultural festival will take place from June 5th to 7th.',
-    image: 'https://images.unsplash.com/photo-1514525253361-bee8718a300c?auto=format&fit=crop&q=80&w=800'
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIab0zlnpwQpdF13DIOf1FAZO0-7fSwGBhA&s'
   },
-  { 
+  {
     id: 3,
-    date: 'Apr 15, 2026', 
-    title: 'Summer Coaching Camp for Competitive Exams Starts Soon', 
+    date: 'Apr 15, 2026',
+    title: 'Summer Coaching Camp for Competitive Exams Starts Soon',
     category: 'Admission',
     desc: 'Specialized coaching for CET, NEET, and JEE pathways will commence next month. Register now at the administrative office.',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800'
+    image: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_093756-scaled.jpg'
   },
-  { 
+  {
     id: 4,
-    date: 'Mar 30, 2026', 
-    title: 'New Science Laboratory Wing Inaugurated', 
+    date: 'Mar 30, 2026',
+    title: 'New Science Laboratory Wing Inaugurated',
     category: 'Infrastructure',
     desc: 'Equipped with state-of-the-art facilities for Physics, Chemistry, and Biology. This new wing will enhance practical learning for all students.',
-    image: 'https://images.unsplash.com/photo-1532187875605-186482a691cd?auto=format&fit=crop&q=80&w=800'
+    image: 'https://content.jdmagicbox.com/comp/karwar/z4/9999p8385.8385.180414230435.q4z4/catalogue/siddhartha-pre-university-college-karwar-colleges-sllxziieqx-250.jpg'
   },
-  { 
+  {
     id: 5,
-    date: 'Mar 12, 2026', 
-    title: 'Inter-College Sports Tournament Results', 
+    date: 'Mar 12, 2026',
+    title: 'Inter-College Sports Tournament Results',
     category: 'Sports',
     desc: 'Siddhartha Institution teams triumphed in Volleyball and Badminton. Congratulations to all our athletes for their stellar performance.',
-    image: 'https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&q=80&w=800'
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS7eLcMglmguaN6d9BuQgV5m3HSfc0vEbDVA&s'
   },
-  { 
+  {
     id: 6,
-    date: 'Feb 20, 2026', 
-    title: 'Workshop on Career Guidance for Final Year Students', 
+    date: 'Feb 20, 2026',
+    title: 'Workshop on Career Guidance for Final Year Students',
     category: 'Seminar',
     desc: 'Experts from various industries shared insights on emerging career paths and essential skills for the modern professional world.',
-    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800'
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSFFLJdE3ER6iMXEiBWlHSgx5pbHJpr6QKaQ&s'
   }
 ];
 
@@ -102,29 +102,29 @@ export default function NewsPage() {
               }}
             >
               <div style={{ height: '220px', overflow: 'hidden' }}>
-                <img 
-                  src={news.image} 
-                  alt={news.title} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                <img
+                  src={news.image}
+                  alt={news.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
               <div style={{ padding: '30px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', gap: '15px', marginBottom: '15px', alignItems: 'center' }}>
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '5px', 
-                    fontSize: '12px', 
-                    color: '#888' 
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    fontSize: '12px',
+                    color: '#888'
                   }}>
                     <Calendar size={14} /> {news.date}
                   </div>
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '5px', 
-                    fontSize: '11px', 
-                    fontWeight: 'bold', 
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    fontSize: '11px',
+                    fontWeight: 'bold',
                     color: THEME.accent,
                     textTransform: 'uppercase',
                     backgroundColor: THEME.lightBg,
@@ -141,10 +141,10 @@ export default function NewsPage() {
                   {news.desc}
                 </p>
                 <div style={{ marginTop: 'auto' }}>
-                  <a href="#" style={{ 
-                    color: THEME.primary, 
-                    textDecoration: 'none', 
-                    fontWeight: 'bold', 
+                  <a href="#" style={{
+                    color: THEME.primary,
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
                     fontSize: '14px',
                     display: 'flex',
                     alignItems: 'center',
@@ -166,25 +166,25 @@ export default function NewsPage() {
           Never miss an update. Receive the latest news and announcements directly in your inbox.
         </p>
         <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', maxWidth: '500px', margin: '0 auto' }}>
-          <input 
-            type="email" 
-            placeholder="Your Email Address" 
-            style={{ 
-              flex: 1, 
-              padding: '12px 20px', 
-              borderRadius: '4px', 
+          <input
+            type="email"
+            placeholder="Your Email Address"
+            style={{
+              flex: 1,
+              padding: '12px 20px',
+              borderRadius: '4px',
               border: `1px solid ${THEME.border}`,
-              fontSize: '14px' 
-            }} 
+              fontSize: '14px'
+            }}
           />
-          <button style={{ 
-            backgroundColor: THEME.primary, 
-            color: 'white', 
-            padding: '12px 30px', 
-            border: 'none', 
-            borderRadius: '4px', 
-            fontWeight: 'bold', 
-            cursor: 'pointer' 
+          <button style={{
+            backgroundColor: THEME.primary,
+            color: 'white',
+            padding: '12px 30px',
+            border: 'none',
+            borderRadius: '4px',
+            fontWeight: 'bold',
+            cursor: 'pointer'
           }}>
             SUBSCRIBE
           </button>

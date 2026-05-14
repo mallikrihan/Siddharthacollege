@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
@@ -50,6 +50,7 @@ export default function App() {
 }
 
 function HomePage() {
+  const navigate = useNavigate();
   const ctaSectionStyle: React.CSSProperties = {
     backgroundColor: THEME.accent,
     padding: '60px 20px',
@@ -106,30 +107,39 @@ function HomePage() {
           Admissions are now open for the academic year 2026-27. Secure your future today.
         </p>
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-          <button style={{
-            backgroundColor: THEME.primary,
-            color: '#fff',
-            padding: '15px 35px',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}>
+          <button 
+            onClick={() => navigate('/apply')}
+            style={{
+              backgroundColor: THEME.primary,
+              color: '#fff',
+              padding: '15px 35px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
             Download Prospectus
           </button>
-          <button style={{
-            backgroundColor: '#ffffff',
-            color: THEME.primary,
-            padding: '15px 35px',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}>
+          <button 
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{
+              backgroundColor: '#ffffff',
+              color: THEME.primary,
+              padding: '15px 35px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
             Visit Campus
           </button>
         </div>

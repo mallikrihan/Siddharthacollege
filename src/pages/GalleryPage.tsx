@@ -6,22 +6,22 @@ import { Image as ImageIcon, Camera, Filter } from 'lucide-react';
 const CATEGORIES = ['All', 'Campus', 'Events', 'Sports', 'Academic'];
 
 const GALLERY_IMAGES = [
-  { id: 1, category: 'Campus', url: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800', title: 'Main Building' },
-  { id: 2, category: 'Academic', url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800', title: 'Modern Library' },
-  { id: 3, category: 'Events', url: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800', title: 'Cultural Fest 2025' },
-  { id: 4, category: 'Sports', url: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80&w=800', title: 'Basketball Court' },
-  { id: 5, category: 'Academic', url: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800', title: 'Science Lab' },
-  { id: 6, category: 'Campus', url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800', title: 'Computer Center' },
-  { id: 7, category: 'Events', url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800', title: 'Annual Day' },
-  { id: 8, category: 'Sports', url: 'https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&q=80&w=800', title: 'Football Ground' },
-  { id: 9, category: 'Campus', url: 'https://images.unsplash.com/photo-1525921429624-479b6a29d84c?auto=format&fit=crop&q=80&w=800', title: 'Student Lounge' },
+  { id: 1, category: 'Campus', url: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg', title: 'Main Building' },
+  { id: 2, category: 'Academic', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSFFLJdE3ER6iMXEiBWlHSgx5pbHJpr6QKaQ&s', title: 'Modern Library' },
+  { id: 3, category: 'Events', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIab0zlnpwQpdF13DIOf1FAZO0-7fSwGBhA&s', title: 'Cultural Fest 2025' },
+  { id: 4, category: 'Sports', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS7eLcMglmguaN6d9BuQgV5m3HSfc0vEbDVA&s', title: 'Basketball Court' },
+  { id: 5, category: 'Academic', url: 'https://siddharthaglobalschool.in/wp-content/uploads/2023/03/bio4-1024x576.jpg', title: 'Science Lab' },
+  { id: 6, category: 'Campus', url: 'https://www.siddharthadegree.in/wp-content/uploads/2022/03/Computer-Lab-768x514-1-300x201.jpg', title: 'Computer Center' },
+  { id: 7, category: 'Events', url: 'https://siddhartha.edu.in/wp-content/uploads/2026/04/Annualday-2026-siddhartha-5.jpg', title: 'Annual Day' },
+  { id: 8, category: 'Sports', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-CQDFuTP9sRnVLzqo0P9y8IUceqacvPSDA&s', title: 'Football Ground' },
+  { id: 9, category: 'Campus', url: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092008-1024x473.jpg', title: 'Student Lounge' },
 ];
 
 export default function GalleryPage() {
   const [filter, setFilter] = useState('All');
 
-  const filteredImages = filter === 'All' 
-    ? GALLERY_IMAGES 
+  const filteredImages = filter === 'All'
+    ? GALLERY_IMAGES
     : GALLERY_IMAGES.filter(img => img.category === filter);
 
   return (
@@ -63,12 +63,12 @@ export default function GalleryPage() {
         </div>
 
         {/* Gallery Grid */}
-        <motion.div 
+        <motion.div
           layout
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
-            gap: '30px' 
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gap: '30px'
           }}
         >
           <AnimatePresence mode='popLayout'>
@@ -81,27 +81,27 @@ export default function GalleryPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ y: -10 }}
-                style={{ 
-                  position: 'relative', 
-                  borderRadius: '8px', 
-                  overflow: 'hidden', 
+                style={{
+                  position: 'relative',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
                   height: '300px',
                   boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
                   cursor: 'pointer',
                   backgroundColor: THEME.white
                 }}
               >
-                <img 
-                  src={img.url} 
-                  alt={img.title} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                <img
+                  src={img.url}
+                  alt={img.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-                <div style={{ 
-                  position: 'absolute', 
-                  bottom: 0, 
-                  left: 0, 
-                  right: 0, 
-                  background: 'linear-gradient(transparent, rgba(0,0,0,0.8))', 
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
                   padding: '20px',
                   color: 'white'
                 }}>
@@ -130,15 +130,15 @@ export default function GalleryPage() {
         <p style={{ maxWidth: '700px', margin: '0 auto 40px', opacity: 0.8, lineHeight: 1.6 }}>
           Our campus is more than just buildings; it's a living environment where students create lifelong memories and achieve their full potential.
         </p>
-        <a 
-          href="/#contact" 
-          style={{ 
-            backgroundColor: THEME.accent, 
-            color: 'white', 
-            padding: '15px 40px', 
-            borderRadius: '4px', 
-            textDecoration: 'none', 
-            fontWeight: 'bold' 
+        <a
+          href="/#contact"
+          style={{
+            backgroundColor: THEME.accent,
+            color: 'white',
+            padding: '15px 40px',
+            borderRadius: '4px',
+            textDecoration: 'none',
+            fontWeight: 'bold'
           }}
         >
           Book a Campus Tour

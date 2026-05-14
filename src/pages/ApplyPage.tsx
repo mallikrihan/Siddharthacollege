@@ -107,9 +107,9 @@ export default function ApplyPage() {
       <div style={containerStyle}>
         {/* Images Header */}
         <div style={headerBannerStyle}>
-          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=600" alt="College Campus 1" style={imageStyle} />
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600" alt="College Campus 2" style={imageStyle} />
-          <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=600" alt="College Campus 3" style={imageStyle} />
+          <img src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_091627-1536x710.jpg" alt="College Campus 1" style={imageStyle} />
+          <img src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092008-1536x710.jpg" alt="College Campus 2" style={imageStyle} />
+          <img src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg" alt="College Campus 3" style={imageStyle} />
         </div>
 
         {/* Downloads & Apply details */}
