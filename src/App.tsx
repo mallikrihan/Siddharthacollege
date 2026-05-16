@@ -38,11 +38,11 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/About" element={<AboutPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/apply" element={<ApplyPage />} />
-          <Route path="/Admissions" element={<AdmissionsPage />} />
-          <Route path="/Gallery" element={<GalleryPage />} />
-          <Route path="/News" element={<NewsPage />} />
+          <Route path="/admissions" element={<AdmissionsPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/news" element={<NewsPage />} />
         </Routes>
         <Footer />
       </div>

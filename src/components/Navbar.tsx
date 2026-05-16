@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, GraduationCap, Menu, X, ArrowRight, Globe, Search, Plus, Minus } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { THEME, NAVIGATION } from '../constants';
 
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState<number | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -179,7 +180,14 @@ export default function Navbar() {
                   <div key={idx} className="border-b border-slate-50/50 pb-2 last:border-0">
                     <div 
                       className="flex items-center justify-between py-4 cursor-pointer group"
-                      onClick={() => item.dropdown ? toggleMobileItem(idx) : (window.location.href = item.link)}
+                      onClick={() => {
+                        if (item.dropdown) {
+                          toggleMobileItem(idx);
+                        } else {
+                          navigate(item.link);
+                          setMobileMenuOpen(false);
+                        }
+                      }}
                     >
                       <Link
                         to={item.dropdown ? '#' : item.link}

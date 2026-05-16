@@ -27,27 +27,27 @@ export const NAVIGATION = [
   { name: 'Home', link: '/' },
   {
     name: 'About Us',
-    link: '/About',
+    link: '/about',
     dropdown: [
-      { name: 'Founder & Story', link: '/About#story' },
-      { name: "Principal's Message", link: '/About#principal' },
-      { name: 'Vision & Mission', link: '/About#vision-mission' },
-      { name: 'Affiliation & NCERT', link: '/About#affiliation' },
-      { name: 'Our Facilities', link: '/About#facilities' },
-      { name: 'Achievements', link: '/About#achievements' },
-      { name: 'Our Alumni', link: '/About#alumni' },
-      { name: 'Visionary Team', link: '/About#team' }
+      { name: 'Founder & Story', link: '/about#story' },
+      { name: "Principal's Message", link: '/about#principal' },
+      { name: 'Vision & Mission', link: '/about#vision-mission' },
+      { name: 'Affiliation & NCERT', link: '/about#affiliation' },
+      { name: 'Our Facilities', link: '/about#facilities' },
+      { name: 'Achievements', link: '/about#achievements' },
+      { name: 'Our Alumni', link: '/about#alumni' },
+      { name: 'Visionary Team', link: '/about#team' }
     ]
   },
   {
     name: 'Academics',
     link: '/#admissions',
     dropdown: [
-      { name: 'Pre-Primary', link: '/Admissions' },
-      { name: 'Primary', link: '/Admissions' },
-      { name: 'High School', link: '/Admissions' },
-      { name: 'PUC', link: '/Admissions' },
-      { name: 'Degree', link: '/Admissions' }
+      { name: 'Pre-Primary', link: '/admissions' },
+      { name: 'Primary', link: '/admissions' },
+      { name: 'High School', link: '/admissions' },
+      { name: 'PUC', link: '/admissions' },
+      { name: 'Degree', link: '/admissions' }
     ]
   },
   {
@@ -61,8 +61,8 @@ export const NAVIGATION = [
       { name: 'Commerce', link: '/#faculty' }
     ]
   },
-  { name: 'Admissions', link: '/Admissions' },
-  { name: 'Gallery', link: '/Gallery' },
-  { name: 'News & Events', link: '/News' },
+  { name: 'Admissions', link: '/admissions' },
+  { name: 'Gallery', link: '/gallery' },
+  { name: 'News & Events', link: '/news' },
   { name: 'Contact Us', link: '/#contact' },
 ];
