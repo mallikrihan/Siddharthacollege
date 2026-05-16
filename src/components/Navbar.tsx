@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* Top Accent Line */}
       <div className={`h-1 w-full transition-all duration-700 ${scrolled ? 'bg-primary' : 'bg-accent/30 backdrop-blur-sm'}`} />
 
-      <div className={`max-w-[1500px] mx-auto transition-all duration-700 ${scrolled ? 'px-6 py-3' : 'px-6 py-5'}`}>
+      <div className={`max-w-[1500px] mx-auto transition-all duration-700 mt-5 ${scrolled ? 'px-6 py-3' : 'px-6 py-5'}`}>
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center gap-8">
@@ -131,7 +131,7 @@ export default function Navbar() {
             {/* Modern Mobile Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`relative z-[1100] w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-300 ${mobileMenuOpen ? 'bg-primary text-white' : scrolled ? 'bg-slate-100 text-primary' : 'bg-white/10 text-white backdrop-blur-md'}`}
+              className={`lg:hidden relative z-[1100] w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-300 ${mobileMenuOpen ? 'bg-primary text-white' : scrolled ? 'bg-slate-100 text-primary' : 'bg-white/10 text-white backdrop-blur-md'}`}
             >
               <div className="flex flex-col gap-1.5 items-center justify-center">
                 <motion.span 

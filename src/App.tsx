@@ -128,10 +128,10 @@ function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Phone, title: 'Phone', value: CONTACT.phone, color: 'bg-blue-50' },
-              { icon: Mail, title: 'Email', value: CONTACT.email, color: 'bg-amber-50' },
-              { icon: MapPin, title: 'Address', value: CONTACT.address, color: 'bg-emerald-50' },
-              { icon: Clock, title: 'Hours', value: CONTACT.hours, color: 'bg-purple-50' }
+              { icon: Phone, title: 'Phone', value: CONTACT.phone, color: 'bg-blue-50 text-blue-600' },
+              { icon: Mail, title: 'Email', value: CONTACT.email, color: 'bg-amber-50 text-amber-600' },
+              { icon: MapPin, title: 'Address', value: CONTACT.address, color: 'bg-emerald-50 text-emerald-600' },
+              { icon: Clock, title: 'Hours', value: CONTACT.hours, color: 'bg-purple-50 text-purple-600' }
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -139,13 +139,15 @@ function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-10 bg-white rounded-3xl soft-shadow group hover:-translate-y-2 transition-all duration-500 border border-slate-100"
+                className="p-8 md:p-10 bg-white rounded-[2.5rem] soft-shadow group hover:-translate-y-2 transition-all duration-500 border border-slate-100 flex flex-col h-full"
               >
-                <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500`}>
-                  <item.icon size={28} strokeWidth={1.5} />
+                <div className={`w-14 h-14 rounded-2xl ${item.color.split(' ')[0]} ${item.color.split(' ')[1]} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+                  <item.icon size={26} strokeWidth={1.5} />
                 </div>
-                <h4 className="text-xs uppercase tracking-widest font-bold text-slate-400 mb-4">{item.title}</h4>
-                <p className="text-lg font-medium text-slate-900 leading-relaxed">{item.value}</p>
+                <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400 mb-4">{item.title}</h4>
+                <p className="text-base md:text-lg font-bold text-primary leading-relaxed break-words">
+                  {item.value}
+                </p>
               </motion.div>
             ))}
           </div>
