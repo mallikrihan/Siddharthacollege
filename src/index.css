@@ -1,11 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Outfit", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
+  
+  --color-primary: #003366;
+  --color-accent: #c8922a;
+}
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Outfit', sans-serif;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  width: 100%;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
 [id] {
-  scroll-margin-top: 150px;
+  scroll-margin-top: 100px;
+}
+
+/* Glassmorphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 34, 68, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Modern Shadows */
+.soft-shadow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Animations */
+@keyframes kenburns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.ken-burns {
+  animation: kenburns 20s ease-out infinite alternate;
 }
 
 /* Responsive Grid Overrides */
@@ -30,17 +82,11 @@ html {
     display: none !important;
   }
   
-  /* Global Responsive Overrides */
-  h1 { font-size: 32px !important; line-height: 1.2 !important; }
-  h2 { font-size: 28px !important; line-height: 1.2 !important; }
-  h3 { font-size: 22px !important; }
+  h1 { font-size: 36px !important; line-height: 1.1 !important; }
+  h2 { font-size: 30px !important; line-height: 1.2 !important; }
+  h3 { font-size: 24px !important; }
   
-  section { padding: 50px 0 !important; }
-  .container-padding { padding: 0 20px !important; }
+  section { padding: 60px 0 !important; }
+  .container-padding { padding: 0 24px !important; }
 }
 
-/* Fix for horizontal overflow */
-body {
-  overflow-x: hidden;
-  width: 100%;
-}

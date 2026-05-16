@@ -1,83 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { THEME } from '../constants';
 import { motion, AnimatePresence } from 'motion/react';
-import { Image as ImageIcon, Camera, Filter } from 'lucide-react';
+import { Image as ImageIcon, Camera, Filter, X, Maximize2, ChevronRight, Loader2 } from 'lucide-react';
+import { wpService, GalleryItem } from '../services/wpService';
 
 const CATEGORIES = ['All', 'Campus', 'Events', 'Sports', 'Academic'];
 
-const GALLERY_IMAGES = [
-  { id: 1, category: 'Campus', url: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg', title: 'Main Building' },
-  { id: 2, category: 'Academic', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSFFLJdE3ER6iMXEiBWlHSgx5pbHJpr6QKaQ&s', title: 'Modern Library' },
-  { id: 3, category: 'Events', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIab0zlnpwQpdF13DIOf1FAZO0-7fSwGBhA&s', title: 'Cultural Fest 2025' },
-  { id: 4, category: 'Sports', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS7eLcMglmguaN6d9BuQgV5m3HSfc0vEbDVA&s', title: 'Basketball Court' },
-  { id: 5, category: 'Academic', url: 'https://siddharthaglobalschool.in/wp-content/uploads/2023/03/bio4-1024x576.jpg', title: 'Science Lab' },
-  { id: 6, category: 'Campus', url: 'https://www.siddharthadegree.in/wp-content/uploads/2022/03/Computer-Lab-768x514-1-300x201.jpg', title: 'Computer Center' },
-  { id: 7, category: 'Events', url: 'https://siddhartha.edu.in/wp-content/uploads/2026/04/Annualday-2026-siddhartha-5.jpg', title: 'Annual Day' },
-  { id: 8, category: 'Sports', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-CQDFuTP9sRnVLzqo0P9y8IUceqacvPSDA&s', title: 'Football Ground' },
-  { id: 9, category: 'Campus', url: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092008-1024x473.jpg', title: 'Student Lounge' },
+const FALLBACK_GALLERY: GalleryItem[] = [
+  { id: 1, category: 'Campus', url: 'https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg', title: 'Main Institutional Wing' },
+  { id: 2, category: 'Academic', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSFFLJdE3ER6iMXEiBWlHSgx5pbHJpr6QKaQ&s', title: 'Modern Resource Center' },
+  { id: 3, category: 'Events', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIab0zlnpwQpdF13DIOf1FAZO0-7fSwGBhA&s', title: 'Cultural Festival 2025' }
 ];
 
 export default function GalleryPage() {
   const [filter, setFilter] = useState('All');
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const [gallery, setGallery] = useState<GalleryItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      setLoading(true);
+      const data = await wpService.getGallery();
+      setGallery(data.length > 0 ? data : FALLBACK_GALLERY);
+      setLoading(false);
+    };
+    fetchGallery();
+  }, []);
 
   const filteredImages = filter === 'All'
-    ? GALLERY_IMAGES
-    : GALLERY_IMAGES.filter(img => img.category === filter);
+    ? gallery
+    : gallery.filter(img => img.category === filter);
 
   return (
-    <div style={{ backgroundColor: THEME.lightBg, minHeight: '100vh' }}>
-      {/* Header */}
-      <div style={{ backgroundColor: THEME.primary, color: 'white', padding: '60px 20px', textAlign: 'center' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '15px' }}>
-          <Camera size={40} color={THEME.accent} />
+    <div className="bg-white min-h-screen">
+      {/* Cinematic Header */}
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-primary">
+        <div className="absolute inset-0 z-0 opacity-30">
+          <img 
+            src="https://images.unsplash.com/photo-1523050853063-bd80e29247f3?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover ken-burns" 
+            alt="Gallery Hero"
+          />
         </div>
-        <h1 style={{ fontSize: '48px', fontFamily: 'Georgia, serif', marginBottom: '10px' }}>Institutional Gallery</h1>
-        <p style={{ fontSize: '18px', opacity: 0.9 }}>Capturing moments of learning, growth, and excellence.</p>
-      </div>
-
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '40px', flexWrap: 'wrap' }} className="gallery-filters">
-          {CATEGORIES.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className="filter-btn"
-              style={{
-                padding: '8px 20px',
-                borderRadius: '30px',
-                border: `2px solid ${filter === cat ? THEME.accent : THEME.border}`,
-                backgroundColor: filter === cat ? THEME.accent : THEME.white,
-                color: filter === cat ? THEME.white : THEME.primary,
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: '0.3s',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '14px'
-              }}
-            >
-              {cat === 'All' && <Filter size={14} />}
-              {cat}
-            </button>
-          ))}
+        <div className="relative z-10 text-center px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 backdrop-blur-md mb-6">
+              <Camera size={14} className="text-accent" />
+              <span className="text-accent text-[10px] font-black uppercase tracking-[0.2em]">Visual Legacy</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 tracking-tight">
+              Institutional <span className="italic text-accent">Gallery</span>
+            </h1>
+            <p className="text-white/70 max-w-xl mx-auto font-sans text-sm md:text-base leading-relaxed tracking-wide">
+              A curated collection of moments capturing the essence of academic rigor, athletic spirit, and cultural vibrancy.
+            </p>
+          </motion.div>
         </div>
-        <style>{`
-          @media (max-width: 600px) {
-            .gallery-filters { gap: 8px !important; }
-            .filter-btn { padding: 6px 15px !important; font-size: 12px !important; }
-          }
-        `}</style>
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent" />
+      </section>
 
-        {/* Gallery Grid */}
+      <div className="max-w-[1400px] mx-auto px-6 py-20">
+        {/* Modern Filter System */}
+        <div className="flex flex-col items-center gap-8 mb-16">
+          <div className="flex flex-wrap justify-center gap-3 p-2 bg-slate-50 rounded-[2rem] border border-slate-100">
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-8 py-3 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 ${
+                  filter === cat 
+                  ? 'bg-primary text-white shadow-xl shadow-primary/20' 
+                  : 'text-slate-400 hover:text-primary hover:bg-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          {loading && <Loader2 className="animate-spin text-accent" size={24} />}
+        </div>
+
+        {/* Premium Gallery Grid */}
         <motion.div
           layout
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: '30px'
-          }}
-          className="responsive-grid-3"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode='popLayout'>
             {filteredImages.map(img => (
@@ -87,36 +98,26 @@ export default function GalleryPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5, ease: "circOut" }}
                 whileHover={{ y: -10 }}
-                style={{
-                  position: 'relative',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  height: '300px',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                  cursor: 'pointer',
-                  backgroundColor: THEME.white
-                }}
+                className="group relative h-[400px] rounded-[2.5rem] overflow-hidden bg-slate-100 shadow-xl shadow-slate-200/50 cursor-pointer"
+                onClick={() => setSelectedImage(img)}
               >
                 <img
                   src={img.url}
                   alt={img.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
-                  padding: '20px',
-                  color: 'white'
-                }}>
-                  <div style={{ fontSize: '12px', color: THEME.accent, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '5px' }}>
-                    {img.category}
+                
+                {/* Modern Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
+                  <div className="translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-2">{img.category}</div>
+                    <h4 className="text-2xl font-serif text-white mb-6 leading-tight">{img.title}</h4>
+                    <div className="flex items-center gap-3 text-white/60 font-black text-[10px] uppercase tracking-[0.2em]">
+                      View Details <Maximize2 size={14} className="text-accent" />
+                    </div>
                   </div>
-                  <h4 style={{ margin: 0, fontSize: '18px' }}>{img.title}</h4>
                 </div>
               </motion.div>
             ))}
@@ -124,34 +125,81 @@ export default function GalleryPage() {
         </motion.div>
 
         {/* Empty State */}
-        {filteredImages.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '100px 0', color: '#888' }}>
-            <ImageIcon size={60} style={{ marginBottom: '20px', opacity: 0.5 }} />
-            <p style={{ fontSize: '20px' }}>No images found in this category.</p>
+        {!loading && filteredImages.length === 0 && (
+          <div className="text-center py-40">
+            <div className="w-20 h-20 rounded-full bg-slate-50 flex items-center justify-center mx-auto mb-6">
+              <ImageIcon className="text-slate-200" size={40} />
+            </div>
+            <p className="text-slate-400 font-serif text-2xl">No captures found in this category.</p>
           </div>
         )}
       </div>
 
-      {/* Stats/CTA Section at bottom of Gallery */}
-      <div style={{ backgroundColor: THEME.primary, color: 'white', padding: '80px 20px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '32px', fontFamily: 'Georgia, serif', marginBottom: '20px' }}>Experience Our Vibrant Campus</h2>
-        <p style={{ maxWidth: '700px', margin: '0 auto 40px', opacity: 0.8, lineHeight: 1.6 }}>
-          Our campus is more than just buildings; it's a living environment where students create lifelong memories and achieve their full potential.
-        </p>
-        <a
-          href="/#contact"
-          style={{
-            backgroundColor: THEME.accent,
-            color: 'white',
-            padding: '15px 40px',
-            borderRadius: '4px',
-            textDecoration: 'none',
-            fontWeight: 'bold'
-          }}
-        >
-          Book a Campus Tour
-        </a>
-      </div>
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[2000] bg-primary/95 backdrop-blur-xl flex items-center justify-center p-6 md:p-12"
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-10 right-10 w-14 h-14 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-accent transition-colors"
+            >
+              <X size={28} />
+            </button>
+            
+            <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+              <motion.div 
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                className="lg:col-span-2 rounded-[2.5rem] overflow-hidden shadow-2xl h-[40vh] md:h-[70vh]"
+              >
+                <img 
+                  src={selectedImage.url} 
+                  className="w-full h-full object-cover" 
+                  alt={selectedImage.title} 
+                />
+              </motion.div>
+              
+              <div className="text-left">
+                <div className="text-accent text-xs font-black uppercase tracking-[0.4em] mb-4">{selectedImage.category}</div>
+                <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight">{selectedImage.title}</h2>
+                <p className="text-white/60 text-lg leading-relaxed mb-12">
+                  Part of our commitment to documenting the journey of our students through various phases of growth and achievement.
+                </p>
+                <button 
+                  onClick={() => setSelectedImage(null)}
+                  className="px-10 py-4 bg-white text-primary rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-white transition-all"
+                >
+                  Close View
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CTA Footer */}
+      <section className="py-24 bg-primary px-6 text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80" className="w-full h-full object-cover" alt="Background" />
+        </div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-8">Experience Excellence in Person</h2>
+          <p className="text-white/60 text-lg leading-relaxed mb-12">
+            While photos capture the moment, our campus offers an atmosphere of learning that must be experienced firsthand.
+          </p>
+          <a
+            href="/#contact"
+            className="inline-flex items-center gap-4 px-12 py-5 bg-accent text-white rounded-2xl font-black uppercase tracking-[0.3em] text-xs hover:scale-105 transition-all shadow-2xl shadow-accent/20"
+          >
+            Book a Campus Tour <ChevronRight size={16} />
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

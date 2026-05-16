@@ -3,135 +3,125 @@ import React from 'react';
 import { THEME } from '../constants';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import { Leaf, BookOpen, GraduationCap, Microscope, BarChart3, Award } from 'lucide-react';
+import { Leaf, BookOpen, GraduationCap, Microscope, BarChart3, Award, ArrowRight } from 'lucide-react';
 
 const PROGRAMS = [
   {
     title: 'Pre-Primary',
-    desc: 'LKG & UKG, play-based learning for the early years.',
-    details: 'Foundation of social and cognitive skills.',
-    strength: '100+',
-    icon: <Leaf size={40} />
+    desc: 'LKG & UKG foundation',
+    details: 'Play-based learning focusing on social and cognitive development for early years.',
+    strength: '100+ Students',
+    icon: <Leaf size={32} />
   },
   {
     title: 'Primary School',
-    desc: 'Grades 1–7, holistic child development.',
-    details: 'Balanced academic and extracurricular curriculum.',
-    strength: '438+',
-    icon: <BookOpen size={40} />
+    desc: 'Grades 1–7 holistic',
+    details: 'A balanced academic and extracurricular curriculum for all-round growth.',
+    strength: '430+ Students',
+    icon: <BookOpen size={32} />
   },
   {
     title: 'High School',
-    desc: 'Grades 8–10, board exam preparation.',
-    details: 'Focus on core subjects and analytical thinking.',
-    strength: '235+',
-    icon: <Award size={40} />
+    desc: 'Grades 8–10 boards',
+    details: 'Focused preparation for board exams with emphasis on analytical thinking.',
+    strength: '230+ Students',
+    icon: <Award size={32} />
   },
   {
     title: 'PUC Science',
-    desc: 'PCM & PCMB, engineering/medicine pathways.',
-    details: 'Rigorous coaching for competitive exams.',
-    strength: '1200+',
-    icon: <Microscope size={40} />
+    desc: 'PCM & PCMB pathways',
+    details: 'Rigorous coaching for CET, NEET, and JEE with state-of-the-art laboratory access.',
+    strength: '1200+ Students',
+    icon: <Microscope size={32} />
   },
   {
     title: 'PUC Commerce',
-    desc: 'Business Studies, Economics, Accountancy.',
-    details: 'Preparing future business leaders and professionals.',
-    strength: '140+',
-    icon: <BarChart3 size={40} />
+    desc: 'Business & Finance',
+    details: 'Preparing future business leaders through expert faculty and practical insights.',
+    strength: '140+ Students',
+    icon: <BarChart3 size={32} />
   },
   {
     title: 'Degree',
-    desc: 'B.Com / B.Sc, government-affiliated programmes.',
-    details: 'Comprehensive higher education for career success.',
-    strength: '85',
-    icon: <GraduationCap size={40} />
+    desc: 'Higher Education',
+    details: 'Comprehensive B.Com and B.Sc programs affiliated with leading universities.',
+    strength: '100+ Students',
+    icon: <GraduationCap size={32} />
   }
 ];
 
 export default function AdmissionsSection() {
   const navigate = useNavigate();
-  const sectionStyle: React.CSSProperties = {
-    padding: '80px 0',
-    backgroundColor: THEME.lightBg,
-  };
-
-  const containerStyle: React.CSSProperties = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px',
-  };
-
-  const headerStyle: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '60px',
-  };
-
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-    gap: '30px',
-  };
-
-  const cardStyle: React.CSSProperties = {
-    backgroundColor: THEME.white,
-    padding: '40px',
-    borderRadius: '4px',
-    border: `1px solid ${THEME.border}`,
-    borderTop: `4px solid ${THEME.primary}`,
-    transition: '0.3s',
-    cursor: 'pointer',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-  };
 
   return (
-    <section style={sectionStyle} id="admissions">
-      <div style={containerStyle}>
-        <div style={headerStyle}>
-          <div style={{ color: THEME.accent, fontWeight: 'bold', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Optimize your Learning Approach for Academic Success.</div>
-          <h2 style={{ fontSize: '40px', color: THEME.primary, fontFamily: 'Georgia, serif', fontWeight: 'bold' }}>Admissions 2026-27</h2>
-          <div style={{ width: '60px', height: '3px', backgroundColor: THEME.accent, margin: '20px auto' }}></div>
+    <section className="py-24 bg-slate-50 relative overflow-hidden" id="admissions">
+      {/* Decorative Background */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-accent mb-4">Admissions 2026-27</h2>
+            <h3 className="text-4xl md:text-5xl font-serif text-primary mb-6">Explore Our Programs</h3>
+            <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed">
+              Unlock your potential with our diverse range of academic pathways, designed to foster innovation, character, and academic excellence.
+            </p>
+          </motion.div>
         </div>
 
-        <div style={gridStyle} className="responsive-grid-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROGRAMS.map((prog, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ y: -8, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
-              style={cardStyle}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ y: -12 }}
+              className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col items-start text-left group transition-all duration-500"
               onClick={() => navigate('/apply')}
             >
-              <div style={{ color: THEME.accent, marginBottom: '20px' }}>
+              <div className="w-16 h-16 rounded-2xl bg-slate-50 text-primary flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                 {prog.icon}
               </div>
-              <h3 style={{ fontSize: '22px', color: THEME.primary, marginBottom: '15px', fontWeight: 'bold' }}>{prog.title}</h3>
-              <p style={{ color: THEME.primary, fontWeight: 600, fontSize: '14px', marginBottom: '10px' }}>{prog.desc}</p>
-              <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.6 }}>{prog.details}</p>
-              <p style={{ color: '#666', fontSize: '14px', lineHeight: 1.6 }}>{prog.strength}</p>
-              <button
-                style={{
-                  marginTop: '25px',
-                  backgroundColor: 'transparent',
-                  border: `1px solid ${THEME.accent}`,
-                  color: THEME.accent,
-                  padding: '8px 20px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                  borderRadius: '4px',
-                  transition: '0.3s',
-                  cursor: 'pointer'
-                }}
-              >
-                Apply Now
-              </button>
+              
+              <div className="flex-1">
+                <div className="text-[10px] uppercase tracking-[0.2em] font-black text-accent mb-2">{prog.desc}</div>
+                <h4 className="text-2xl font-serif text-primary mb-4 group-hover:text-accent transition-colors">{prog.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">{prog.details}</p>
+                <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  {prog.strength}
+                </div>
+              </div>
+
+              <div className="mt-10 flex items-center gap-3 text-primary font-black text-[10px] uppercase tracking-[0.2em] group-hover:gap-5 transition-all">
+                Learn More <ArrowRight size={14} className="text-accent" />
+              </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
+          <button 
+            onClick={() => navigate('/apply')}
+            className="px-12 py-5 bg-primary text-white rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl shadow-primary/30 hover:bg-accent transition-all duration-500 hover:scale-105"
+          >
+            Start Your Application
+          </button>
+        </motion.div>
       </div>
     </section>
   );

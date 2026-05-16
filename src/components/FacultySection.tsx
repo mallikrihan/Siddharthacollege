@@ -2,69 +2,65 @@
 import React from 'react';
 import { THEME } from '../constants';
 import { motion } from 'motion/react';
+import { 
+  Microscope, 
+  Beaker, 
+  Calculator, 
+  Dna, 
+  Briefcase, 
+  TrendingUp, 
+  BarChart, 
+  Globe,
+  Binary
+} from 'lucide-react';
 
 const SUBJECTS = [
-  { name: 'Physics', title: 'Mechanics, Electricity, Magnetism, Thermodynamics, Optics, Waves.', icon: '🔬' },
-  { name: 'Chemistry', title: 'Organic, Inorganic, Physical, Environmental, Analytical, Industrial.', icon: '🧪' },
-  { name: 'Mathematics', title: 'Calculus, Algebra, Geometry, Statistics, Trigonometry, Differential Equations', icon: '📐' },
-  { name: 'Biology', title: 'Botany, Zoology, Microbiology, Biotechnology, Genetics, Ecology', icon: '🧬' },
-  { name: 'Accounting', title: 'Financial Accounting, Cost Accounting, Auditing, Corporate Finance, Taxation', icon: '📑' },
-  { name: 'Economics', title: 'Microeconomics, Macroeconomics, Statistics, International Economics, Public Finance', icon: '📈' },
-  { name: 'Business Studies', title: 'Introduction to Business, Business Environment, Business Finance, Business Management, Marketing Management', icon: '💼' },
-  { name: 'Statistics', title: 'Descriptive Statistics, Inferential Statistics, Probability, Correlation and Regression, Sampling Methods', icon: '📊' }
+  { name: 'Physics', title: 'Mechanics, Electromagnetism & Quantum Studies', icon: <Microscope size={28} /> },
+  { name: 'Chemistry', title: 'Organic, Inorganic & Physical Research', icon: <Beaker size={28} /> },
+  { name: 'Mathematics', title: 'Advanced Calculus & Analytical Geometry', icon: <Calculator size={28} /> },
+  { name: 'Biology', title: 'Genetics, Microbiology & Ecology', icon: <Dna size={28} /> },
+  { name: 'Accounting', title: 'Financial Auditing & Corporate Taxation', icon: <Briefcase size={28} /> },
+  { name: 'Economics', title: 'Macroeconomics & Global Fiscal Policy', icon: <TrendingUp size={28} /> },
+  { name: 'Business Studies', title: 'Strategic Management & Global Marketing', icon: <Globe size={28} /> },
+  { name: 'Statistics', title: 'Probability & Computational Analytics', icon: <BarChart size={28} /> }
 ];
 
 export default function FacultySection() {
-  const sectionStyle: React.CSSProperties = {
-    padding: '80px 0',
-    backgroundColor: THEME.white,
-    position: 'relative'
-  };
-
-  const containerStyle: React.CSSProperties = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px',
-  };
-
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '20px',
-  };
-
-  const cardStyle: React.CSSProperties = {
-    backgroundColor: THEME.lightBg,
-    padding: '30px',
-    borderRadius: '8px',
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '15px',
-    border: '1px solid #eee',
-    cursor: 'pointer'
-  };
-
   return (
-    <section style={sectionStyle} id="faculty">
-      <div style={containerStyle}>
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <div style={{ color: THEME.accent, fontWeight: 'bold' }}>ACADEMIC DEPARTMENTS</div>
-          <h2 style={{ fontSize: '36px', color: THEME.primary, fontFamily: 'Georgia, serif', marginTop: '10px' }}>Popular Faculty Areas of Study</h2>
+    <section className="py-24 bg-white" id="faculty">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-accent mb-4">Academic Departments</h2>
+            <h3 className="text-4xl md:text-5xl font-serif text-primary leading-tight">
+              Specialized Faculty <br/>Areas of Study
+            </h3>
+          </div>
+          <p className="text-slate-500 max-w-sm text-sm leading-relaxed">
+            Our departments are led by distinguished academics dedicated to fostering a culture of rigorous inquiry and intellectual growth.
+          </p>
         </div>
 
-        <div style={gridStyle} className="responsive-grid-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {SUBJECTS.map((sub, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ scale: 1.05, backgroundColor: THEME.white, boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}
-              style={cardStyle}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05 }}
+              whileHover={{ y: -5 }}
+              className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 group"
             >
-              <div style={{ fontSize: '40px' }}>{sub.icon}</div>
-              <h4 style={{ color: THEME.primary, fontWeight: 'bold', fontSize: '18px' }}>{sub.name}</h4>
-              <p style={{ color: THEME.text, fontSize: '12px' }}>{sub.title}</p>
-              <div style={{ color: THEME.accent, fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>Department</div>
+              <div className="w-14 h-14 rounded-2xl bg-white text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+                {sub.icon}
+              </div>
+              <h4 className="text-xl font-serif text-primary mb-3 group-hover:text-accent transition-colors">{sub.name}</h4>
+              <p className="text-slate-500 text-xs leading-relaxed mb-6 h-12 overflow-hidden">{sub.title}</p>
+              <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-primary transition-colors">Department</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
             </motion.div>
           ))}
         </div>

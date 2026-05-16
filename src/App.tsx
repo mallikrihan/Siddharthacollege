@@ -27,12 +27,13 @@ import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import { THEME, CONTACT } from './constants';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div style={{ fontFamily: 'Arial, sans-serif', color: THEME.text }}>
+      <div style={{ color: THEME.text }}>
         <TopBar />
         <Navbar />
         <Routes>
@@ -51,38 +52,6 @@ export default function App() {
 
 function HomePage() {
   const navigate = useNavigate();
-  const ctaSectionStyle: React.CSSProperties = {
-    backgroundColor: THEME.accent,
-    padding: '60px 20px',
-    textAlign: 'center',
-    color: '#ffffff',
-  };
-
-  const contactSectionStyle: React.CSSProperties = {
-    padding: '80px 0',
-    backgroundColor: THEME.white,
-  };
-
-  const contactGridStyle: React.CSSProperties = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '30px',
-    padding: '0 20px',
-  };
-
-  const contactCardStyle: React.CSSProperties = {
-    padding: '30px',
-    backgroundColor: THEME.lightBg,
-    borderRadius: '4px',
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '15px',
-    border: `1px solid ${THEME.border}`,
-  };
 
   return (
     <>
@@ -99,112 +68,104 @@ function HomePage() {
       <FAQSection />
 
       {/* CTA Section */}
-      <section style={ctaSectionStyle}>
-        <h2 style={{ fontSize: '32px', fontFamily: 'Georgia, serif', fontWeight: 'bold', marginBottom: '20px' }}>
-          Embark on a Journey of Excellence
-        </h2>
-        <p style={{ fontSize: '18px', marginBottom: '30px', opacity: 0.9 }}>
-          Admissions are now open for the academic year 2026-27. Secure your future today.
-        </p>
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }} className="cta-buttons-container">
-          <button 
-            onClick={() => navigate('/apply')}
-            className="cta-btn"
-            style={{
-              backgroundColor: THEME.primary,
-              color: '#fff',
-              padding: '15px 35px',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+      <section className="py-32 bg-primary relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-bold text-white mb-8 font-serif italic"
           >
-            Download Prospectus
-          </button>
-          <button 
-            onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="cta-btn"
-            style={{
-              backgroundColor: '#ffffff',
-              color: THEME.primary,
-              padding: '15px 35px',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            Embark on a Journey <br/>of Excellence
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-white/70 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
           >
-            Visit Campus
-          </button>
+            Admissions are now open for the academic year 2026-27. <br/>
+            Join a community dedicated to shaping the leaders of tomorrow.
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-6"
+          >
+            <button 
+              onClick={() => navigate('/apply')}
+              className="px-12 py-5 bg-accent hover:bg-white text-white hover:text-primary rounded-full font-bold uppercase tracking-widest transition-all duration-300 soft-shadow"
+            >
+              Download Prospectus
+            </button>
+            <button 
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="px-12 py-5 bg-white/10 hover:bg-white text-white hover:text-primary backdrop-blur-md border border-white/20 rounded-full font-bold uppercase tracking-widest transition-all duration-300"
+            >
+              Visit Campus
+            </button>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section style={contactSectionStyle} id="contact">
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <div style={{ color: THEME.accent, fontWeight: 'bold' }}>GET IN TOUCH</div>
-          <h2 style={{ fontSize: '40px', color: THEME.primary, fontFamily: 'Georgia, serif', marginTop: '10px' }}>Contact Information</h2>
-          <div style={{ width: '60px', height: '3px', backgroundColor: THEME.accent, margin: '20px auto' }}></div>
-        </div>
+      <section className="py-32 bg-slate-50" id="contact">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+            <div className="max-w-2xl">
+              <span className="text-accent text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Get In Touch</span>
+              <h2 className="text-5xl md:text-6xl font-bold text-primary font-serif">Contact Information</h2>
+            </div>
+            <div className="hidden md:block w-32 h-[1px] bg-slate-300 mb-6" />
+          </div>
 
-        <div style={contactGridStyle} className="responsive-grid-4">
-          <div style={contactCardStyle} className="contact-card">
-            <div style={{ color: THEME.accent }}><Phone size={30} /></div>
-            <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Phone</h4>
-            <p style={{ color: '#666' }}>{CONTACT.phone}</p>
-          </div>
-          <div style={contactCardStyle} className="contact-card">
-            <div style={{ color: THEME.accent }}><Mail size={30} /></div>
-            <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Email</h4>
-            <p style={{ color: '#666' }}>{CONTACT.email}</p>
-          </div>
-          <div style={contactCardStyle} className="contact-card">
-            <div style={{ color: THEME.accent }}><MapPin size={30} /></div>
-            <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Address</h4>
-            <p style={{ color: '#666' }}>{CONTACT.address}</p>
-          </div>
-          <div style={contactCardStyle} className="contact-card">
-            <div style={{ color: THEME.accent }}><Clock size={30} /></div>
-            <h4 style={{ fontWeight: 'bold', color: THEME.primary }}>Hours</h4>
-            <p style={{ color: '#666' }}>{CONTACT.hours}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: Phone, title: 'Phone', value: CONTACT.phone, color: 'bg-blue-50' },
+              { icon: Mail, title: 'Email', value: CONTACT.email, color: 'bg-amber-50' },
+              { icon: MapPin, title: 'Address', value: CONTACT.address, color: 'bg-emerald-50' },
+              { icon: Clock, title: 'Hours', value: CONTACT.hours, color: 'bg-purple-50' }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="p-10 bg-white rounded-3xl soft-shadow group hover:-translate-y-2 transition-all duration-500 border border-slate-100"
+              >
+                <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500`}>
+                  <item.icon size={28} strokeWidth={1.5} />
+                </div>
+                <h4 className="text-xs uppercase tracking-widest font-bold text-slate-400 mb-4">{item.title}</h4>
+                <p className="text-lg font-medium text-slate-900 leading-relaxed">{item.value}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       <style>{`
+        .bg-primary { background-color: ${THEME.primary}; }
+        .text-primary { color: ${THEME.primary}; }
+        .text-accent { color: ${THEME.accent}; }
+        .bg-accent { background-color: ${THEME.accent}; }
+        .font-serif { font-family: var(--font-serif); }
+        
         @media (max-width: 600px) {
-          #contact .responsive-grid-4 { 
-            grid-template-columns: 1fr 1fr !important; 
-            display: grid !important;
-            gap: 10px !important; 
-          }
-          .contact-card { padding: 12px 5px !important; gap: 5px !important; }
-          .contact-card svg { width: 18px !important; height: 18px !important; }
-          .contact-card h4 { font-size: 12px !important; margin: 0 !important; }
-          .contact-card p { font-size: 10px !important; margin: 0 !important; line-height: 1.2 !important; }
-          
-          .cta-buttons-container { 
-            flex-direction: row !important; 
-            gap: 10px !important; 
-            flex-wrap: nowrap !important;
-          }
-          .cta-btn { 
-            padding: 8px 15px !important; 
-            font-size: 10px !important; 
-            white-space: nowrap !important;
-            letter-spacing: 0 !important;
+          .contact-grid { 
+            grid-template-columns: 1fr !important; 
           }
         }
       `}</style>
-
     </>
   );
 }
+
