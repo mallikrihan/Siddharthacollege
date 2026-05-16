@@ -25,56 +25,109 @@ export interface GalleryItem {
 
 export const wpService = {
   /**
-   * Fetch News/Updates from WordPress Posts
-   * Uses '_embed' to fetch featured images in a single request.
+   * Helper to get Category ID by Name
    */
-  async getNews(): Promise<NewsItem[]> {
+  async getCategoryId(name: string): Promise<number | null> {
     try {
-      const response = await fetch(`${WP_BASE_URL}/posts?_embed&per_page=6`);
-      if (!response.ok) throw new Error('Failed to fetch news');
-
-      const posts = await response.json();
-
-      return posts.map((post: any) => ({
-        id: post.id,
-        date: new Date(post.date).toLocaleDateString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric'
-        }),
-        title: post.title?.rendered || 'Untitled Update',
-        category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Update',
-        desc: post.excerpt?.rendered
-          ? post.excerpt.rendered.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...'
-          : 'No description available.',
-        image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80'
-      }));
+      const response = await fetch(`${WP_BASE_URL}/categories?search=${name}`);
+      const categories = await response.json();
+      const category = categories.find((c: any) => c.name.toLowerCase() === name.toLowerCase());
+      return category ? category.id : null;
     } catch (error) {
-      console.error('WP News Error:', error);
-      return []; // Return empty array on failure
+      console.error(`Error finding category ${name}:`, error);
+      return null;
     }
   },
 
   /**
-   * Fetch Gallery items.
-   * In WordPress, you can create a category called 'Gallery' 
-   * and we fetch posts from that category.
+   * Fetch News/Updates from WordPress Posts (Filtered by 'Blog' category)
+   */
+  async getNews(): Promise<NewsItem[]> {
+    try {
+      const categoryId = await this.getCategoryId('Blog') || await this.getCategoryId('blog');
+      const url = categoryId
+        ? `${WP_BASE_URL}/posts?_embed&categories=${categoryId}&per_page=6`
+        : `${WP_BASE_URL}/posts?_embed&per_page=6`;
+
+      console.log('Fetching News from:', url);
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Failed to fetch news');
+
+      const posts = await response.json();
+
+      return posts.map((post: any) => {
+        // 1. Try Featured Media (Standard)
+        const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
+        let imageUrl = featuredMedia?.source_url || featuredMedia?.media_details?.sizes?.full?.source_url;
+
+        // 2. Fallback: Search for the first image in the HTML content
+        if (!imageUrl && post.content?.rendered) {
+          const match = post.content.rendered.match(/<img[^>]+src="([^">]+)"/);
+          if (match) imageUrl = match[1];
+        }
+
+        // 3. Final Fallback: High-quality Unsplash placeholder
+        if (!imageUrl) {
+          imageUrl = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80';
+        }
+
+        return {
+          id: post.id,
+          date: new Date(post.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          }),
+          title: post.title?.rendered || 'Untitled Update',
+          category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Update',
+          desc: post.excerpt?.rendered
+            ? post.excerpt.rendered.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...'
+            : 'No description available.',
+          image: imageUrl
+        };
+      });
+    } catch (error) {
+      console.error('WP News Error:', error);
+      return [];
+    }
+  },
+
+  /**
+   * Fetch Gallery items (Filtered by 'Gallery' category)
    */
   async getGallery(): Promise<GalleryItem[]> {
     try {
-      // Note: You might need to find the ID of your 'Gallery' category in WP
-      // For now, fetching all posts as a demonstration.
-      const response = await fetch(`${WP_BASE_URL}/posts?_embed&per_page=12`);
+      const categoryId = await this.getCategoryId('Gallery') || await this.getCategoryId('gallery');
+      const url = categoryId
+        ? `${WP_BASE_URL}/posts?_embed&categories=${categoryId}&per_page=12`
+        : `${WP_BASE_URL}/posts?_embed&per_page=12`;
+
+      const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch gallery');
 
       const posts = await response.json();
 
-      return posts.map((post: any) => ({
-        id: post.id,
-        category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Campus',
-        url: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1523050853063-bd80e29247f3?auto=format&fit=crop&q=80',
-        title: post.title?.rendered || 'Gallery Image'
-      }));
+      return posts.map((post: any) => {
+        const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
+        let imageUrl = featuredMedia?.source_url || featuredMedia?.media_details?.sizes?.large?.source_url || featuredMedia?.media_details?.sizes?.full?.source_url;
+
+        // Fallback to content scan
+        if (!imageUrl && post.content?.rendered) {
+          const match = post.content.rendered.match(/<img[^>]+src="([^">]+)"/);
+          if (match) imageUrl = match[1];
+        }
+
+        if (!imageUrl) {
+          imageUrl = 'https://images.unsplash.com/photo-1523050853063-bd80e29247f3?auto=format&fit=crop&q=80';
+        }
+
+        return {
+          id: post.id,
+          category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Campus',
+          url: imageUrl,
+          title: post.title?.rendered || 'Gallery Image'
+        };
+      });
     } catch (error) {
       console.error('WP Gallery Error:', error);
       return [];
