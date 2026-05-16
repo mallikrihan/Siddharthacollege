@@ -5,7 +5,7 @@
  * Replace 'https://siddhartha-edu.in' with your actual WordPress site URL.
  */
 
-const WP_BASE_URL = 'https://siddhartha-edu.in/wp-json/wp/v2';
+const WP_BASE_URL = 'https://orchid-caterpillar-835119.hostingersite.com/wp-json/wp/v2';
 
 export interface NewsItem {
   id: number;
@@ -32,19 +32,19 @@ export const wpService = {
     try {
       const response = await fetch(`${WP_BASE_URL}/posts?_embed&per_page=6`);
       if (!response.ok) throw new Error('Failed to fetch news');
-      
+
       const posts = await response.json();
-      
+
       return posts.map((post: any) => ({
         id: post.id,
-        date: new Date(post.date).toLocaleDateString('en-US', { 
-          month: 'short', 
-          day: 'numeric', 
-          year: 'numeric' 
+        date: new Date(post.date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
         }),
         title: post.title?.rendered || 'Untitled Update',
         category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Update',
-        desc: post.excerpt?.rendered 
+        desc: post.excerpt?.rendered
           ? post.excerpt.rendered.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...'
           : 'No description available.',
         image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80'
@@ -66,9 +66,9 @@ export const wpService = {
       // For now, fetching all posts as a demonstration.
       const response = await fetch(`${WP_BASE_URL}/posts?_embed&per_page=12`);
       if (!response.ok) throw new Error('Failed to fetch gallery');
-      
+
       const posts = await response.json();
-      
+
       return posts.map((post: any) => ({
         id: post.id,
         category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Campus',

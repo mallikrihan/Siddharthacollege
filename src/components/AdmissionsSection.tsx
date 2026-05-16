@@ -88,13 +88,13 @@ export default function AdmissionsSection() {
               className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col items-start text-left group transition-all duration-500"
               onClick={() => navigate('/apply')}
             >
-              <div className="w-16 h-16 rounded-2xl bg-slate-50 text-primary flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+              <div className="w-16 h-16 rounded-2xl bg-slate-50 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
                 {prog.icon}
               </div>
               
               <div className="flex-1">
-                <div className="text-[10px] uppercase tracking-[0.2em] font-black text-accent mb-2">{prog.desc}</div>
-                <h4 className="text-2xl font-serif text-primary mb-4 group-hover:text-accent transition-colors">{prog.title}</h4>
+                <div className="text-[10px] uppercase tracking-[0.2em] font-black text-accent mb-3">{prog.desc}</div>
+                <h4 className="text-2xl font-serif text-primary mb-4 group-hover:text-accent transition-colors leading-tight">{prog.title}</h4>
                 <p className="text-slate-500 text-sm leading-relaxed mb-6">{prog.details}</p>
                 <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />

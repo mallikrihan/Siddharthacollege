@@ -1,224 +1,162 @@
 import React from 'react';
-import { THEME } from '../constants';
-import { Download, GraduationCap, FileText, CheckCircle2 } from 'lucide-react';
-import { Leaf, BookOpen, Microscope, BarChart3, Award } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-const PROGRAMS = [
-  {
-    title: 'Pre-Primary',
-    desc: 'LKG & UKG, play-based learning for the early years.',
-    details: 'Foundation of social and cognitive skills.',
-    strength: '100+',
-    icon: <Leaf size={40} />
-  },
-  {
-    title: 'Primary School',
-    desc: 'Grades 1–7, holistic child development.',
-    details: 'Balanced academic and extracurricular curriculum.',
-    strength: '438+',
-    icon: <BookOpen size={40} />
-  },
-  {
-    title: 'High School',
-    desc: 'Grades 8–10, board exam preparation.',
-    details: 'Focus on core subjects and analytical thinking.',
-    strength: '235+',
-    icon: <Award size={40} />
-  },
-  {
-    title: 'PUC Science',
-    desc: 'PCM & PCMB, engineering/medicine pathways.',
-    details: 'Rigorous coaching for competitive exams.',
-    strength: '1200+',
-    icon: <Microscope size={40} />
-  },
-  {
-    title: 'PUC Commerce',
-    desc: 'Business Studies, Economics, Accountancy.',
-    details: 'Preparing future business leaders and professionals.',
-    strength: '140+',
-    icon: <BarChart3 size={40} />
-  },
-  {
-    title: 'Degree',
-    desc: 'B.Com / B.Sc, government-affiliated programmes.',
-    details: 'Comprehensive higher education for career success.',
-    strength: '85',
-    icon: <GraduationCap size={40} />
-  }
-];
+import { THEME, CONTACT } from '../constants';
+import { motion } from 'motion/react';
+import { 
+  FileDown, 
+  Send, 
+  ClipboardCheck, 
+  HelpCircle, 
+  ArrowRight,
+  Calendar,
+  ShieldCheck,
+  CheckCircle2
+} from 'lucide-react';
 
 export default function ApplyPage() {
-  const navigate = useNavigate();
-  const containerStyle: React.CSSProperties = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '40px 20px',
-  };
-
-  const headerBannerStyle: React.CSSProperties = {
-    display: 'flex',
-    gap: '20px',
-    marginBottom: '40px',
-    flexWrap: 'wrap'
-  };
-
-  const imageStyle: React.CSSProperties = {
-    flex: '1 1 300px',
-    height: '250px',
-    objectFit: 'cover',
-    borderRadius: '8px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-  };
-
-  const btnStyle = {
-    backgroundColor: THEME.primary,
-    color: '#fff',
-    padding: '15px 30px',
-    borderRadius: '4px',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '10px',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: '16px',
-    transition: '0.3s'
-  };
-
-  const sectionTitleStyle: React.CSSProperties = {
-    color: THEME.primary,
-    fontSize: '28px',
-    fontWeight: 'bold',
-    marginBottom: '20px',
-    borderBottom: `2px solid ${THEME.accent}`,
-    paddingBottom: '10px',
-    display: 'inline-block'
-  };
+  const images = [
+    "https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_091627-1536x710.jpg",
+    "https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092008-1536x710.jpg",
+    "https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg"
+  ];
 
   return (
-    <div style={{ backgroundColor: THEME.lightBg, minHeight: '100vh' }}>
-      <style>{`
-        .apply-btn:hover {
-          filter: brightness(1.1);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-      `}</style>
-      {/* Page Header */}
-      <div style={{ backgroundColor: THEME.primary, color: 'white', padding: '60px 20px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '48px', fontFamily: 'Georgia, serif', marginBottom: '10px' }}>Apply & Admissions</h1>
-        <p style={{ fontSize: '18px', opacity: 0.9 }}>Join Siddhartha Institution. Your journey to excellence starts here.</p>
-      </div>
-
-      <div style={containerStyle}>
-        {/* Images Header */}
-        <div style={headerBannerStyle}>
-          <img src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_091627-1536x710.jpg" alt="College Campus 1" style={imageStyle} />
-          <img src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_092008-1536x710.jpg" alt="College Campus 2" style={imageStyle} />
-          <img src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg" alt="College Campus 3" style={imageStyle} />
+    <div className="bg-white min-h-screen">
+      {/* Cinematic Hero Header */}
+      <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-primary">
+        <div className="absolute inset-0 z-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover" 
+            alt="Apply Now"
+          />
         </div>
-
-        {/* Downloads & Apply details */}
-        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '60px' }}>
-          <div style={{ flex: '2 1 400px', backgroundColor: THEME.white, padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-            <h2 style={sectionTitleStyle}>Application Details</h2>
-            <p style={{ lineHeight: 1.6, marginBottom: '20px' }}>
-              We are delighted that you are considering Siddhartha Institution for your education.
-              Our admissions process is designed to be straightforward and transparent.
+        <div className="relative z-10 text-center px-6 pt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 backdrop-blur-md mb-6">
+              <ClipboardCheck size={14} className="text-accent" />
+              <span className="text-accent text-[10px] font-black uppercase tracking-[0.2em]">Admissions 2026-27</span>
+            </div>
+            <h1 className="text-3xl md:text-7xl font-serif text-white mb-6 tracking-tight leading-tight md:leading-[1.1]">
+              Apply & <span className="italic text-accent underline decoration-white/10 underline-offset-8">Admissions</span>
+            </h1>
+            <p className="text-white/70 max-w-xl mx-auto font-sans text-xs md:text-base leading-relaxed tracking-wide">
+              Your journey to academic excellence and character building begins with a single step. Join the Siddhartha community today.
             </p>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                <CheckCircle2 color={THEME.accent} size={24} />
-                <span><strong>Step 1:</strong> Download the admission form and fill it out completely.</span>
-              </li>
-              <li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                <CheckCircle2 color={THEME.accent} size={24} />
-                <span><strong>Step 2:</strong> Attach required documents (Marks card, Aadhaar card, Photos).</span>
-              </li>
-              <li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                <CheckCircle2 color={THEME.accent} size={24} />
-                <span><strong>Step 3:</strong> Submit the application at our campus office.</span>
-              </li>
-            </ul>
-            <button className="apply-btn" style={{ ...btnStyle, marginTop: '30px' }} onClick={() => alert('Online application portal coming soon!')}>
-              <FileText size={20} /> Apply Online Now
-            </button>
-          </div>
+          </motion.div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent" />
+      </section>
 
-          <div style={{ flex: '1 1 300px', backgroundColor: THEME.white, padding: '30px', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
-            <h3 style={{ fontSize: '22px', color: THEME.primary, fontWeight: 'bold' }}>Important Documents</h3>
-            <button className="apply-btn" style={btnStyle}>
-              <Download size={20} /> Download Admission Form
-            </button>
-            <button className="apply-btn" style={{ ...btnStyle, backgroundColor: THEME.accent }}>
-              <Download size={20} /> Download Brochure
-            </button>
-          </div>
+      <div className="max-w-[1400px] mx-auto px-6 pb-32">
+        {/* Campus Preview Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 -translate-y-8 md:-translate-y-12 relative z-20">
+          {images.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="group relative h-48 md:h-64 overflow-hidden rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border-4 border-white"
+            >
+              <img src={img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={`Campus ${i + 1}`} />
+              <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors" />
+            </motion.div>
+          ))}
         </div>
 
-        {/* Scholarships Details */}
-        <div style={{ marginBottom: '60px' }}>
-          <h2 style={{ ...sectionTitleStyle, display: 'block', textAlign: 'center', borderBottom: 'none' }}>Scholarship Details</h2>
-          <div style={{ width: '60px', height: '3px', backgroundColor: THEME.accent, margin: '0 auto 30px' }}></div>
-          <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <div style={{ flex: '1 1 300px', maxWidth: '500px', backgroundColor: THEME.white, padding: '30px', borderRadius: '8px', borderTop: `4px solid ${THEME.primary}`, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-              <h3 style={{ fontSize: '24px', color: THEME.primary, marginBottom: '15px' }}>NSP Scholarship</h3>
-              <p style={{ color: '#555', lineHeight: 1.6 }}>
-                The <strong>National Scholarship Portal (NSP)</strong> provides financial assistance to meritorious and deserving students.
-                Students from minority communities or lower-income backgrounds can apply through the central portal.
-              </p>
-              <button
-                onClick={() => window.open('https://www.nsp.gov.in/', '_blank', 'noopener,noreferrer')}
-                style={{
-                  marginTop: '25px',
-                  backgroundColor: 'transparent',
-                  border: `1px solid ${THEME.accent}`,
-                  color: THEME.accent,
-                  padding: '8px 20px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                  borderRadius: '4px',
-                  transition: '0.3s',
-                  cursor: 'pointer'
-                }}
-              >
-                Apply Now
-              </button>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 mt-8 md:mt-12">
+          {/* Main Info */}
+          <div className="lg:col-span-8">
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">How to Apply</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
+                    <Send size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-4">Online Application</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-8">
+                    The fastest way to join us. Fill out our digital form, upload your documents, and pay the application fee securely.
+                  </p>
+                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">
+                    Start Online Process <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
+                    <FileDown size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-4">Offline Application</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-8">
+                    Prefer the traditional way? Download our official application form, fill it manually, and visit our campus office.
+                  </p>
+                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">
+                    Download Form <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">Admission Requirements</h2>
+              <div className="space-y-4 md:space-y-6">
+                {[
+                  "Original Transfer Certificate (TC)",
+                  "Original Marks Card of the previous qualifying examination",
+                  "Recent Passport size photographs (5 copies)",
+                  "Aadhar Card copy of the student and parents",
+                  "Caste and Income Certificate (if applicable)"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 md:p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                    <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center shrink-0">
+                      <ShieldCheck size={18} />
+                    </div>
+                    <span className="text-slate-600 text-sm md:text-base font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="bg-primary p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] text-white relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 blur-[50px] rounded-full" />
+              <h3 className="text-2xl font-serif mb-6 relative z-10">Admission Helpline</h3>
+              <div className="space-y-6 relative z-10">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                    <Calendar size={20} className="text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-widest opacity-50">Office Hours</div>
+                    <div className="font-bold">Mon - Sat, 9am - 5pm</div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-accent font-black text-2xl tracking-tight leading-none">{CONTACT.phone}</span>
+                  <span className="text-white/60 text-xs truncate">{CONTACT.email}</span>
+                </div>
+              </div>
             </div>
-            <div style={{ flex: '1 1 300px', maxWidth: '500px', backgroundColor: THEME.white, padding: '30px', borderRadius: '8px', borderTop: `4px solid ${THEME.accent}`, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-              <h3 style={{ fontSize: '24px', color: THEME.primary, marginBottom: '15px' }}>SSP Scholarship</h3>
-              <p style={{ color: '#555', lineHeight: 1.6 }}>
-                The <strong>State Scholarship Portal (SSP)</strong> is a Karnataka state initiative offering financial aid.
-                It covers post-matric scholarships for students belonging to SC/ST, OBC, and other backward classes.
+
+            <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100">
+              <HelpCircle className="text-accent mb-6" size={32} />
+              <h3 className="text-xl font-bold text-primary mb-4">Have Questions?</h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                Not sure which program to choose? Our counselors are here to help you find the right path.
               </p>
-              <button
-                onClick={() => window.open('https://ssp.karnataka.gov.in/', '_blank', 'noopener,noreferrer')}
-                style={{
-                  marginTop: '25px',
-                  backgroundColor: 'transparent',
-                  border: `1px solid ${THEME.accent}`,
-                  color: THEME.accent,
-                  padding: '8px 20px',
-                  fontSize: '12px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                  borderRadius: '4px',
-                  transition: '0.3s',
-                  cursor: 'pointer'
-                }}
-              >
-                Apply Now
+              <button className="w-full py-4 bg-white text-primary border border-slate-200 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-primary hover:text-white transition-all">
+                Speak to a Counselor
               </button>
             </div>
           </div>
         </div>
-
-        {/* Standards & Seats */}
-
-
       </div>
     </div>
   );
