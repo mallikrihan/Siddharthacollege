@@ -14,6 +14,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState<number | null>(null);
+  const [logoFailed, setLogoFailed] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -48,30 +49,29 @@ export default function Navbar() {
           {/* Logo Section */}
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-4 group">
-              <div className="relative">
-                <div className={`absolute -inset-2 rounded-full blur-lg opacity-0 group-hover:opacity-20 transition-opacity ${scrolled ? 'bg-primary' : 'bg-white'}`} />
-                <div className={`relative rounded-xl md:rounded-2xl transition-all duration-700 shadow-sm ${scrolled ? 'bg-primary text-white' : 'bg-white text-primary'} flex items-center justify-center overflow-hidden w-11 h-11 md:w-14 md:h-14`}>
-                  {LOGO_URL ? (
-                    <img
-                      src={LOGO_URL}
-                      alt="Siddhartha Logo"
-                      className="h-9 w-9 md:h-11 md:w-11 object-contain"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                        const fallbackIcon = e.currentTarget.parentElement?.querySelector('.fallback-logo');
-                        if (fallbackIcon) {
-                          fallbackIcon.classList.remove('hidden');
-                        }
-                      }}
-                    />
-                  ) : null}
-                  <GraduationCap
-                    size={28}
-                    className={`md:w-8 md:h-8 fallback-logo ${LOGO_URL ? 'hidden' : ''}`}
-                    strokeWidth={1.5}
+              {LOGO_URL && !logoFailed ? (
+                // Custom Logo Image: Rendered directly with transparent background, borderless, and perfectly scaled
+                <div className="relative flex items-center justify-center w-11 h-11 md:w-14 md:h-14 overflow-hidden">
+                  <img
+                    src={LOGO_URL}
+                    alt="Siddhartha Logo"
+                    className="h-10 w-10 md:h-13 md:w-13 object-contain"
+                    onError={() => setLogoFailed(true)}
                   />
                 </div>
-              </div>
+              ) : (
+                // Fallback Icon: Beautiful stylized box with background and shadow
+                <div className="relative">
+                  <div className={`absolute -inset-2 rounded-full blur-lg opacity-0 group-hover:opacity-20 transition-opacity ${scrolled ? 'bg-primary' : 'bg-white'}`} />
+                  <div className={`relative rounded-xl md:rounded-2xl transition-all duration-700 shadow-sm ${scrolled ? 'bg-primary text-white' : 'bg-white text-primary'} flex items-center justify-center overflow-hidden w-11 h-11 md:w-14 md:h-14`}>
+                    <GraduationCap
+                      size={28}
+                      className="md:w-8 md:h-8 fallback-logo"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                </div>
+              )}
               <div className="flex flex-col">
                 <span className={`text-lg md:text-2xl font-black tracking-tighter transition-colors duration-700 whitespace-nowrap leading-none ${scrolled ? 'text-slate-900' : 'text-white'}`}>
                   SIDDHARTHA
@@ -188,26 +188,25 @@ export default function Navbar() {
             <div className="p-6 pt-24 h-full flex flex-col">
               {/* Mobile Menu Header/Logo */}
               <div className="flex items-center gap-3 mb-12 pb-8 border-b border-slate-50">
-                <div className="bg-primary rounded-xl text-white flex items-center justify-center overflow-hidden w-11 h-11">
-                  {LOGO_URL ? (
+                {LOGO_URL && !logoFailed ? (
+                  // Custom Logo Image on mobile menu
+                  <div className="flex items-center justify-center w-11 h-11 overflow-hidden">
                     <img
                       src={LOGO_URL}
                       alt="Siddhartha Logo"
-                      className="h-8 w-8 object-contain"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                        const fallbackIcon = e.currentTarget.parentElement?.querySelector('.fallback-logo-mobile');
-                        if (fallbackIcon) {
-                          fallbackIcon.classList.remove('hidden');
-                        }
-                      }}
+                      className="h-10 w-10 object-contain"
+                      onError={() => setLogoFailed(true)}
                     />
-                  ) : null}
-                  <GraduationCap
-                    size={28}
-                    className={`fallback-logo-mobile ${LOGO_URL ? 'hidden' : ''}`}
-                  />
-                </div>
+                  </div>
+                ) : (
+                  // Fallback Stylized Box on mobile menu
+                  <div className="bg-primary rounded-xl text-white flex items-center justify-center overflow-hidden w-11 h-11">
+                    <GraduationCap
+                      size={28}
+                      className="fallback-logo-mobile"
+                    />
+                  </div>
+                )}
                 <div className="flex flex-col">
                   <span className="text-xl font-black text-primary tracking-tighter">SIDDHARTHA</span>
                   <span className="text-[8px] uppercase tracking-[0.2em] font-bold text-slate-400">Institution Bhatkal</span>
