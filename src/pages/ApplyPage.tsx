@@ -1,16 +1,25 @@
 import React from 'react';
 import { THEME, CONTACT } from '../constants';
 import { motion } from 'motion/react';
-import { 
-  FileDown, 
-  Send, 
-  ClipboardCheck, 
-  HelpCircle, 
+import {
+  FileDown,
+  Send,
+  ClipboardCheck,
+  HelpCircle,
   ArrowRight,
   Calendar,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Coins,
+  Award,
+  Building,
+  CheckSquare,
+  ExternalLink
 } from 'lucide-react';
+
+// GOOGLE FORM LINK: Replace this with your actual admissions Google Form link.
+// When students fill this form, you can configure Google Forms/Sheets to automatically email their answers to your email ID.
+const ONLINE_APPLICATION_FORM_URL = "https://forms.gle/CtuH6XKcNT2zVAqT8";
 
 export default function ApplyPage() {
   const images = [
@@ -24,9 +33,9 @@ export default function ApplyPage() {
       {/* Cinematic Hero Header */}
       <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0 opacity-20">
-          <img 
-            src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&q=80" 
-            className="w-full h-full object-cover" 
+          <img
+            src="https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&q=80"
+            className="w-full h-full object-cover"
             alt="Apply Now"
           />
         </div>
@@ -55,7 +64,7 @@ export default function ApplyPage() {
         {/* Campus Preview Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 -translate-y-8 md:-translate-y-12 relative z-20">
           {images.map((img, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,7 +83,10 @@ export default function ApplyPage() {
             <section className="mb-16">
               <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">How to Apply</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all">
+                <div
+                  onClick={() => window.open(ONLINE_APPLICATION_FORM_URL, '_blank', 'noopener,noreferrer')}
+                  className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all cursor-pointer"
+                >
                   <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
                     <Send size={24} />
                   </div>
@@ -82,7 +94,7 @@ export default function ApplyPage() {
                   <p className="text-slate-500 text-sm leading-relaxed mb-8">
                     The fastest way to join us. Fill out our digital form, upload your documents, and pay the application fee securely.
                   </p>
-                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">
+                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors cursor-pointer">
                     Start Online Process <ArrowRight size={14} />
                   </button>
                 </div>
@@ -102,7 +114,7 @@ export default function ApplyPage() {
               </div>
             </section>
 
-            <section>
+            <section className="mb-16">
               <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">Admission Requirements</h2>
               <div className="space-y-4 md:space-y-6">
                 {[
@@ -119,6 +131,146 @@ export default function ApplyPage() {
                     <span className="text-slate-600 text-sm md:text-base font-medium">{item}</span>
                   </div>
                 ))}
+              </div>
+            </section>
+
+            {/* SSP & NSP Scholarship Section */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">SSP & NSP Scholarship</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8">
+                Siddhartha Institution actively facilitates government scholarships to assist deserving and eligible students.
+                Students can apply under various state and central government schemes via the State Scholarship Portal (SSP) and National Scholarship Portal (NSP).
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* SSP Card */}
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 p-8 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
+                    <Coins size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-3">State Scholarship Portal (SSP)</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-6">
+                    A state government initiative of Karnataka for providing financial assistance to Post-Matric students of SC, ST, OBC, and Minority communities.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span>For Karnataka Domicile Students</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span>Covers Fee Reimbursement</span>
+                    </div>
+                  </div>
+                  <a
+                    href="https://ssp.postmatric.karnataka.gov.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors"
+                  >
+                    Visit SSP Portal <ExternalLink size={12} />
+                  </a>
+                </div>
+
+                {/* NSP Card */}
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 p-8 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
+                    <Award size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-3">National Scholarship Portal (NSP)</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-6">
+                    A centralized portal by the Government of India offering minority, merit-cum-means, and single girl child scholarships.
+                  </p>
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span>All-India Schemes</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span>Central Sector Schemes</span>
+                    </div>
+                  </div>
+                  <a
+                    href="https://scholarships.gov.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors"
+                  >
+                    Visit NSP Portal <ExternalLink size={12} />
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            {/* Scholarship Document Checklist */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">Scholarship Document Checklist</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8">
+                To ensure a hassle-free and successful application process on either SSP or NSP, keep the following mandatory documents ready before starting:
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { title: "Caste & Income Certificate", desc: "Must be valid and issued by the Tahsildar with a valid RD number." },
+                  { title: "Aadhar Seeding Confirmation", desc: "Aadhar must be linked to your active bank account (NPCI status mapped)." },
+                  { title: "College Fee Receipt", desc: "Original receipt received from Siddhartha Institution at the time of admission." },
+                  { title: "Study / Bonafide Certificate", desc: "Issued by the college office showing current year enrollment." },
+                  { title: "Previous Year Marks Card", desc: "10th/SSLC marks card for PUC, or PUC marks card for Degree courses." },
+                  { title: "Student Bank Passbook", desc: "Front page of passbook showing Account Number and IFSC Code." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center shrink-0">
+                      <CheckSquare size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-primary text-sm mb-1">{item.title}</h4>
+                      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Fee Payment & Bank Details */}
+            <section className="mb-16">
+              <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 border-l-4 border-accent pl-6">Fee Payment & Bank Details</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-8">
+                For secure fee transactions, direct admissions, and offline seat bookings, payments can be made directly to the Siddhartha Education Trust bank account.
+                Please share the transaction receipt with the admissions office.
+              </p>
+
+              <div className="bg-gradient-to-br from-primary to-slate-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-10 relative overflow-hidden shadow-xl">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-accent/10 blur-[80px] rounded-full" />
+                <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-accent text-[9px] font-black uppercase tracking-widest">
+                      <Building size={12} /> Official Trust Bank Account
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-white/50 mb-1">Account Holder Name</div>
+                      <div className="font-serif text-lg md:text-xl font-bold text-white">Siddhartha Education Trust (R.)</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-white/50 mb-1">Bank Name & Branch</div>
+                      <div className="font-bold">Canara Bank, Bhatkal Branch</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6 bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-accent/80 font-bold mb-1">Account Number</div>
+                      <div className="font-mono text-xl font-black tracking-wider text-white">05862200024851</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-accent/80 font-bold mb-1">IFSC Code</div>
+                      <div className="font-mono text-xl font-black tracking-wider text-white">CNRB0000586</div>
+                    </div>
+                    <div className="pt-2 text-[10px] text-white/40 leading-relaxed">
+                      *Ensure you mention student's name and registration number in the payment remarks/notes.
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
           </div>

@@ -5,6 +5,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { THEME, NAVIGATION } from '../constants';
 
+// LOGO CONFIGURATION: Change this URL to your school's logo image link (e.g. PNG, SVG, or JPG).
+// If this URL is empty or if the image fails to load, it will gracefully fallback to the GraduationCap icon.
+const LOGO_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQum1DYTnqw0IgjT9Jk3ANbNfUYRzEh0gOykw&s";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
@@ -32,8 +36,8 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-700 ${scrolled
-          ? 'bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)]'
-          : 'bg-transparent'
+        ? 'bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)]'
+        : 'bg-transparent'
         }`}
     >
       {/* Top Accent Line */}
@@ -46,8 +50,26 @@ export default function Navbar() {
             <Link to="/" className="flex items-center gap-4 group">
               <div className="relative">
                 <div className={`absolute -inset-2 rounded-full blur-lg opacity-0 group-hover:opacity-20 transition-opacity ${scrolled ? 'bg-primary' : 'bg-white'}`} />
-                <div className={`relative p-2 rounded-xl md:p-2.5 md:rounded-2xl transition-all duration-700 shadow-sm ${scrolled ? 'bg-primary text-white' : 'bg-white text-primary'}`}>
-                  <GraduationCap size={24} className="md:w-7 md:h-7" strokeWidth={1.5} />
+                <div className={`relative rounded-xl md:rounded-2xl transition-all duration-700 shadow-sm ${scrolled ? 'bg-primary text-white' : 'bg-white text-primary'} flex items-center justify-center overflow-hidden w-11 h-11 md:w-14 md:h-14`}>
+                  {LOGO_URL ? (
+                    <img
+                      src={LOGO_URL}
+                      alt="Siddhartha Logo"
+                      className="h-9 w-9 md:h-11 md:w-11 object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                        const fallbackIcon = e.currentTarget.parentElement?.querySelector('.fallback-logo');
+                        if (fallbackIcon) {
+                          fallbackIcon.classList.remove('hidden');
+                        }
+                      }}
+                    />
+                  ) : null}
+                  <GraduationCap
+                    size={28}
+                    className={`md:w-8 md:h-8 fallback-logo ${LOGO_URL ? 'hidden' : ''}`}
+                    strokeWidth={1.5}
+                  />
                 </div>
               </div>
               <div className="flex flex-col">
@@ -121,8 +143,8 @@ export default function Navbar() {
             <Link
               to="/apply"
               className={`hidden sm:flex px-6 md:px-8 py-3 md:py-3.5 rounded-xl md:rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 relative overflow-hidden group shadow-xl ${scrolled
-                  ? 'bg-primary text-white shadow-primary/20'
-                  : 'bg-white text-primary hover:text-white'
+                ? 'bg-primary text-white shadow-primary/20'
+                : 'bg-white text-primary hover:text-white'
                 }`}
             >
               <span className="relative z-10">Enrol Now</span>
@@ -135,15 +157,15 @@ export default function Navbar() {
               className={`lg:hidden relative z-[1100] w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-300 ${mobileMenuOpen ? 'bg-primary text-white' : scrolled ? 'bg-slate-100 text-primary' : 'bg-white/10 text-white backdrop-blur-md'}`}
             >
               <div className="flex flex-col gap-1.5 items-center justify-center">
-                <motion.span 
+                <motion.span
                   animate={mobileMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
                   className={`w-6 h-0.5 ${mobileMenuOpen ? 'bg-white' : scrolled ? 'bg-primary' : 'bg-white'}`}
                 />
-                <motion.span 
+                <motion.span
                   animate={mobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
                   className={`w-6 h-0.5 ${mobileMenuOpen ? 'bg-white' : scrolled ? 'bg-primary' : 'bg-white'}`}
                 />
-                <motion.span 
+                <motion.span
                   animate={mobileMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
                   className={`w-6 h-0.5 ${mobileMenuOpen ? 'bg-white' : scrolled ? 'bg-primary' : 'bg-white'}`}
                 />
@@ -166,8 +188,25 @@ export default function Navbar() {
             <div className="p-6 pt-24 h-full flex flex-col">
               {/* Mobile Menu Header/Logo */}
               <div className="flex items-center gap-3 mb-12 pb-8 border-b border-slate-50">
-                <div className="p-2 bg-primary rounded-xl text-white">
-                  <GraduationCap size={24} />
+                <div className="bg-primary rounded-xl text-white flex items-center justify-center overflow-hidden w-11 h-11">
+                  {LOGO_URL ? (
+                    <img
+                      src={LOGO_URL}
+                      alt="Siddhartha Logo"
+                      className="h-8 w-8 object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                        const fallbackIcon = e.currentTarget.parentElement?.querySelector('.fallback-logo-mobile');
+                        if (fallbackIcon) {
+                          fallbackIcon.classList.remove('hidden');
+                        }
+                      }}
+                    />
+                  ) : null}
+                  <GraduationCap
+                    size={28}
+                    className={`fallback-logo-mobile ${LOGO_URL ? 'hidden' : ''}`}
+                  />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-black text-primary tracking-tighter">SIDDHARTHA</span>
@@ -178,7 +217,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-2">
                 {NAVIGATION.map((item, idx) => (
                   <div key={idx} className="border-b border-slate-50/50 pb-2 last:border-0">
-                    <div 
+                    <div
                       className="flex items-center justify-between py-4 cursor-pointer group"
                       onClick={() => {
                         if (item.dropdown) {
@@ -207,7 +246,7 @@ export default function Navbar() {
                         </div>
                       )}
                     </div>
-                    
+
                     <AnimatePresence>
                       {item.dropdown && expandedMobileItem === idx && (
                         <motion.div
@@ -236,7 +275,7 @@ export default function Navbar() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-auto pt-12 pb-8">
                 <Link
                   to="/apply"
