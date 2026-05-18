@@ -19,7 +19,7 @@ import {
 
 // GOOGLE FORM LINK: Replace this with your actual admissions Google Form link.
 // When students fill this form, you can configure Google Forms/Sheets to automatically email their answers to your email ID.
-const ONLINE_APPLICATION_FORM_URL = "https://forms.gle/CtuH6XKcNT2zVAqT8";
+const ONLINE_APPLICATION_FORM_URL = "https://forms.gle/kPQft9wwxE8Jst2b9";
 
 export default function ApplyPage() {
   const images = [
