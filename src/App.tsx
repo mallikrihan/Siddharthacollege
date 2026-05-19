@@ -146,9 +146,9 @@ function HomePage() {
                   <div className={`w-12 h-12 rounded-xl ${item.color.split(' ')[0]} ${item.color.split(' ')[1]} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
                     <item.icon size={22} strokeWidth={1.5} />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400 mb-1">{item.title}</h4>
-                    <p className="text-base font-bold text-primary leading-relaxed break-words">
+                    <p className="text-base font-bold text-primary leading-relaxed break-all sm:break-words">
                       {item.value}
                     </p>
                   </div>
