@@ -52,7 +52,7 @@ export default function FacultySection() {
               whileHover={{ y: -5 }}
               className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 group"
             >
-              <div className="w-14 h-14 rounded-2xl bg-white text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-white text-black flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm">
                 {sub.icon}
               </div>
               <h4 className="text-xl font-serif text-primary mb-3 group-hover:text-accent transition-colors">{sub.name}</h4>

@@ -30,7 +30,7 @@ export default function StatsBar() {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="mb-6 p-4 rounded-2xl bg-slate-50 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
+              <div className="mb-6 p-4 rounded-2xl bg-slate-50 text-black group-hover:bg-accent group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
                 <stat.icon size={28} strokeWidth={1.5} />
               </div>
               

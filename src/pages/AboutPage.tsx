@@ -169,7 +169,7 @@ export default function AboutPage() {
               whileHover={{ y: -10 }}
               className="p-10 rounded-3xl bg-white border border-slate-100 hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 group"
             >
-              <div className="w-16 h-16 rounded-2xl bg-slate-50 text-primary flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-slate-50 text-black flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm">
                 {f.icon}
               </div>
               <h4 className="text-xl font-serif text-primary mb-4">{f.name}</h4>

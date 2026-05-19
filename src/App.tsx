@@ -71,38 +71,38 @@ function HomePage() {
       <section className="py-32 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold text-white mb-8 font-serif italic"
           >
-            Embark on a Journey <br/>of Excellence
+            Embark on a Journey <br />of Excellence
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-xl text-white/70 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
           >
-            Admissions are now open for the academic year 2026-27. <br/>
+            Admissions are now open for the academic year 2026-27. <br />
             Join a community dedicated to shaping the leaders of tomorrow.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
             className="flex flex-wrap justify-center gap-6"
           >
-            <button 
+            <button
               onClick={() => navigate('/apply')}
               className="px-12 py-5 bg-accent hover:bg-white text-white hover:text-primary rounded-full font-bold uppercase tracking-widest transition-all duration-300 soft-shadow"
             >
               Download Prospectus
             </button>
-            <button 
+            <button
               onClick={() => {
                 const element = document.getElementById('contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -126,30 +126,66 @@ function HomePage() {
             <div className="hidden md:block w-32 h-[1px] bg-slate-300 mb-6" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Phone, title: 'Phone', value: CONTACT.phone, color: 'bg-blue-50 text-blue-600' },
-              { icon: Mail, title: 'Email', value: CONTACT.email, color: 'bg-amber-50 text-amber-600' },
-              { icon: MapPin, title: 'Address', value: CONTACT.address, color: 'bg-emerald-50 text-emerald-600' },
-              { icon: Clock, title: 'Hours', value: CONTACT.hours, color: 'bg-purple-50 text-purple-600' }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 md:p-10 bg-white rounded-[2.5rem] soft-shadow group hover:-translate-y-2 transition-all duration-500 border border-slate-100 flex flex-col h-full"
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Contact Details */}
+            <div className="lg:col-span-6 space-y-6">
+              {[
+                { icon: Phone, title: 'Phone', value: CONTACT.phone, color: 'bg-blue-50 text-blue-600' },
+                { icon: Mail, title: 'Email', value: CONTACT.email, color: 'bg-amber-50 text-amber-600' },
+                { icon: MapPin, title: 'Address', value: CONTACT.address, color: 'bg-emerald-50 text-emerald-600' },
+                { icon: Clock, title: 'Hours', value: CONTACT.hours, color: 'bg-purple-50 text-purple-600' }
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="p-6 bg-white rounded-3xl soft-shadow group hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex items-center gap-6"
+                >
+                  <div className={`w-12 h-12 rounded-xl ${item.color.split(' ')[0]} ${item.color.split(' ')[1]} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+                    <item.icon size={22} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400 mb-1">{item.title}</h4>
+                    <p className="text-base font-bold text-primary leading-relaxed break-words">
+                      {item.value}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Google Sheets / Form CTA Section */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-6 bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-2xl relative overflow-hidden flex flex-col justify-center items-center text-center min-h-[420px]"
+            >
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-accent" />
+              
+              <div className="w-20 h-20 bg-accent/10 text-accent rounded-full flex items-center justify-center mb-8 shadow-sm">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+
+              <h3 className="text-3xl font-serif font-bold text-primary mb-4">Send Us a Message</h3>
+              <p className="text-sm text-slate-500 leading-relaxed max-w-md mb-8">
+                Have questions about admissions, courses, or college facilities? Click the button below to open our official inquiry form directly and submit your details.
+              </p>
+
+              <button
+                onClick={() => window.open("https://forms.gle/VaUz262y74vhq4Pq8", "_blank")}
+                className="px-10 py-5 bg-primary hover:bg-accent text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-all duration-300 shadow-lg hover:scale-105 flex items-center gap-3 cursor-pointer"
               >
-                <div className={`w-14 h-14 rounded-2xl ${item.color.split(' ')[0]} ${item.color.split(' ')[1]} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                  <item.icon size={26} strokeWidth={1.5} />
-                </div>
-                <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400 mb-4">{item.title}</h4>
-                <p className="text-base md:text-lg font-bold text-primary leading-relaxed break-words">
-                  {item.value}
-                </p>
-              </motion.div>
-            ))}
+                <span>Open Google Sheet Form</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </button>
+            </motion.div>
           </div>
         </div>
       </section>

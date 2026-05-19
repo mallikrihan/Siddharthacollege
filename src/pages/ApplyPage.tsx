@@ -14,7 +14,8 @@ import {
   Award,
   Building,
   CheckSquare,
-  ExternalLink
+  ExternalLink,
+  MapPin
 } from 'lucide-react';
 
 // GOOGLE FORM LINK: Replace this with your actual admissions Google Form link.
@@ -99,17 +100,29 @@ export default function ApplyPage() {
                   </button>
                 </div>
 
-                <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all">
-                  <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
-                    <FileDown size={24} />
+                <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="w-12 h-12 rounded-xl bg-white text-accent flex items-center justify-center mb-6 shadow-sm">
+                      <FileDown size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-4">Offline Application</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed mb-8">
+                      Prefer the traditional way? Download our official application form, fill it manually, and visit our campus office in Bhatkal to submit it.
+                    </p>
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Offline Application</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed mb-8">
-                    Prefer the traditional way? Download our official application form, fill it manually, and visit our campus office.
-                  </p>
-                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">
-                    Download Form <ArrowRight size={14} />
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+                    <button className="flex items-center justify-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all cursor-pointer">
+                      Download Form <FileDown size={14} />
+                    </button>
+                    <a
+                      href="https://maps.google.com/?q=Siddhartha+PU+College,+Bhatkal"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-5 py-3 bg-accent text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-accent/80 hover:scale-[1.02] transition-all"
+                    >
+                      Campus Location <MapPin size={14} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </section>
@@ -260,11 +273,11 @@ export default function ApplyPage() {
                   <div className="space-y-6 bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10">
                     <div>
                       <div className="text-[10px] uppercase tracking-widest text-accent/80 font-bold mb-1">Account Number</div>
-                      <div className="font-mono text-xl font-black tracking-wider text-white">05862200024851</div>
+                      <div className="font-mono text-xl font-black tracking-wider text-white">Not added</div>
                     </div>
                     <div>
                       <div className="text-[10px] uppercase tracking-widest text-accent/80 font-bold mb-1">IFSC Code</div>
-                      <div className="font-mono text-xl font-black tracking-wider text-white">CNRB0000586</div>
+                      <div className="font-mono text-xl font-black tracking-wider text-white">not added</div>
                     </div>
                     <div className="pt-2 text-[10px] text-white/40 leading-relaxed">
                       *Ensure you mention student's name and registration number in the payment remarks/notes.

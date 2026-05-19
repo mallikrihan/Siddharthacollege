@@ -1,9 +1,10 @@
-"use client";
 import React from 'react';
 import { THEME } from '../constants';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AboutSection() {
+  const navigate = useNavigate();
   const sectionStyle: React.CSSProperties = {
     padding: '80px 0',
     backgroundColor: THEME.white,
@@ -78,18 +79,21 @@ export default function AboutSection() {
           <p style={textStyle}>
             With over 15 years of excellence, we have consistently provided a dynamic and student-centered learning environment that empowers students with skills to meet rapidly evolving world challenges.
           </p>
-          <button style={{
-            backgroundColor: THEME.primary,
-            color: '#fff',
-            padding: '12px 30px',
-            border: 'none',
-            borderRadius: '4px',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            marginTop: '10px'
-          }}>
+           <button 
+            onClick={() => navigate('/about')}
+            style={{
+              backgroundColor: THEME.primary,
+              color: '#fff',
+              padding: '12px 30px',
+              border: 'none',
+              borderRadius: '4px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              marginTop: '10px'
+            }}
+          >
             Read More About Us
           </button>
         </div>

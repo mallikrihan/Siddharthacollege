@@ -79,9 +79,9 @@ export default function Footer() {
             To inspire and empower young minds to excel academically, develop a strong moral compass, and contribute meaningfully to society.
           </p>
           <div style={{ display: 'flex', gap: '15px' }}>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent }}><Facebook size={20} /></a>
+            <a href="https://www.facebook.com/SiddharthaPUCollegeBhatkal/" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent }}><Facebook size={20} /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent }}><Twitter size={20} /></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent }}><Instagram size={20} /></a>
+            <a href="https://www.instagram.com/siddhartha_college9606/" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent }}><Instagram size={20} /></a>
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent }}><Youtube size={20} /></a>
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function Footer() {
       </div>
 
       <div style={{ backgroundColor: '#000000', padding: '20px', textAlign: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.5)' }}>
-        © {new Date().getFullYear()} Siddhartha Institution Bhatkal. All Rights Reserved. | Build by MRTS
+        © {new Date().getFullYear()} Siddhartha Institution Bhatkal. All Rights Reserved. | Build by <a href="https://mrts.solutions/" target="_blank" rel="noopener noreferrer" style={{ color: THEME.accent, textDecoration: 'none' }} className="hover:underline transition-all font-bold">MR Tech Solutions</a>
       </div>
     </footer>
   );
