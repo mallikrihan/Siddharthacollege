@@ -3,6 +3,7 @@ import { THEME } from '../constants';
 import { motion } from 'motion/react';
 import { Calendar, Tag, ChevronRight, Newspaper, Bell, ArrowRight, Share2, Loader2 } from 'lucide-react';
 import { wpService, NewsItem } from '../services/wpService';
+import { Link } from 'react-router-dom';
 
 const FALLBACK_NEWS: NewsItem[] = [
   {
@@ -103,44 +104,44 @@ export default function NewsPage() {
               transition={{ delay: idx * 0.1 }}
               className="group flex flex-col h-full"
             >
-              <div className="relative h-[300px] rounded-[2.5rem] overflow-hidden mb-8 shadow-xl shadow-slate-200/50">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute top-6 left-6">
-                  <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-black text-primary uppercase tracking-widest shadow-sm">
-                    {item.category}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col flex-1 px-4">
-                <div className="flex items-center gap-4 mb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar size={12} className="text-accent" />
-                    {item.date}
+              <Link to={`/news/${item.id}`} state={{ article: item }} className="group flex flex-col h-full block">
+                <div className="relative h-[300px] rounded-[2.5rem] overflow-hidden mb-8 shadow-xl shadow-slate-200/50">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-black text-primary uppercase tracking-widest shadow-sm">
+                      {item.category}
+                    </div>
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-serif text-primary mb-4 leading-tight group-hover:text-accent transition-colors">
-                  {item.title}
-                </h3>
-                
-                <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
-                  {item.desc}
-                </p>
-                
-                <div className="flex items-center justify-between pt-6 border-t border-slate-100 mt-auto">
-                  <a href="#" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary group-hover:gap-4 transition-all">
-                    Full Article <ArrowRight size={14} className="text-accent" />
-                  </a>
-                  <button className="text-slate-300 hover:text-accent transition-colors">
-                    <Share2 size={16} />
-                  </button>
+                <div className="flex flex-col flex-1 px-4">
+                  <div className="flex items-center gap-4 mb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar size={12} className="text-accent" />
+                      {item.date}
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-2xl font-serif text-primary mb-4 leading-tight group-hover:text-accent transition-colors" dangerouslySetInnerHTML={{ __html: item.title }} />
+                  
+                  <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-1">
+                    {item.desc}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-6 border-t border-slate-100 mt-auto">
+                    <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary group-hover:gap-4 transition-all">
+                      Full Article <ArrowRight size={14} className="text-accent" />
+                    </span>
+                    <button className="text-slate-300 hover:text-accent transition-colors">
+                      <Share2 size={16} />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

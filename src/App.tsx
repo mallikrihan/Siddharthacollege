@@ -12,6 +12,7 @@ import ApplyPage from './pages/ApplyPage';
 import AdmissionsPage from './pages/AdmissionsPage';
 import GalleryPage from './pages/GalleryPage';
 import NewsPage from './pages/NewsPage';
+import NewsDetailPage from './pages/NewsDetailPage';
 import AboutPage from './pages/AboutPage';
 import HeroSlider from './components/HeroSlider';
 import AdmissionTicker from './components/AdmissionTicker';
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/admissions" element={<AdmissionsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:id" element={<NewsDetailPage />} />
         </Routes>
         <Footer />
       </div>

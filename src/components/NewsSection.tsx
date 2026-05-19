@@ -93,7 +93,7 @@ export default function NewsSection() {
         ) : (
           <div>
             {news.slice(0, 4).map((item) => (
-              <div key={item.id} style={itemStyle} className="news-item">
+              <Link to={`/news/${item.id}`} state={{ article: item }} key={item.id} style={{...itemStyle, textDecoration: 'none'}} className="news-item">
                 <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }} className="news-item-content">
                   <div style={{ color: '#888', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', width: '120px' }} className="news-date">
                     <Calendar size={16} /> {item.date}
@@ -109,12 +109,12 @@ export default function NewsSection() {
                   }}>
                     {item.category}
                   </div>
-                  <h4 style={{ color: THEME.primary, fontSize: '18px', fontWeight: 600 }}>{item.title}</h4>
+                  <h4 style={{ color: THEME.primary, fontSize: '18px', fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: item.title }} />
                 </div>
-                <Link to="/news" style={{ color: THEME.primary }} className="hide-mobile">
+                <div style={{ color: THEME.primary }} className="hide-mobile">
                   <ExternalLink size={20} />
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
         )}

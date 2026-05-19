@@ -42,8 +42,16 @@ export default function VisionMission() {
   return (
     <div style={sectionStyle} id="vision-mission">
       <style>{`
-        @media (max-width: 600px) {
-          .vision-box { padding: 25px !important; }
+        @media (max-width: 768px) {
+          .vision-box {
+            padding: 24px !important;
+            flex-basis: 100% !important;
+            min-width: 0 !important;
+          }
+          .mobile-stack {
+            gap: 20px !important;
+            padding: 0 16px !important;
+          }
         }
       `}</style>
       <div style={containerStyle} className="mobile-stack">

@@ -93,6 +93,46 @@ export const wpService = {
   },
 
   /**
+   * Fetch a single News Item by ID
+   */
+  async getNewsById(id: number | string): Promise<NewsItem | null> {
+    try {
+      const response = await fetch(`${WP_BASE_URL}/posts/${id}?_embed`);
+      if (!response.ok) throw new Error('Failed to fetch news item');
+      
+      const post = await response.json();
+      
+      const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
+      let imageUrl = featuredMedia?.source_url || featuredMedia?.media_details?.sizes?.full?.source_url;
+
+      if (!imageUrl && post.content?.rendered) {
+        const match = post.content.rendered.match(/<img[^>]+src="([^">]+)"/);
+        if (match) imageUrl = match[1];
+      }
+
+      if (!imageUrl) {
+        imageUrl = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80';
+      }
+
+      return {
+        id: post.id,
+        date: new Date(post.date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }),
+        title: post.title?.rendered || 'Untitled Update',
+        category: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Update',
+        desc: post.content?.rendered || 'No description available.',
+        image: imageUrl
+      };
+    } catch (error) {
+      console.error('WP News Error:', error);
+      return null;
+    }
+  },
+
+  /**
    * Fetch Gallery items (Filtered by 'Gallery' category)
    */
   async getGallery(): Promise<GalleryItem[]> {
