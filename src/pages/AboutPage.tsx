@@ -95,7 +95,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-1 lg:order-2 relative rounded-2xl sm:rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl h-[220px] sm:h-[350px] md:h-[500px]"
+              className="order-1 lg:order-2 relative mx-4 sm:mx-8 lg:mx-0 rounded-2xl sm:rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl h-[220px] sm:h-[350px] md:h-[500px]"
             >
               <img
                 src="https://siddhartha-edu.in/wp-content/uploads/2025/12/20241218_095921-2048x946.jpg"
@@ -115,8 +115,8 @@ export default function AboutPage() {
       <section className="py-20 md:py-32 bg-slate-50 px-6">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-accent mb-4">Leadership</h2>
-            <h3 className="text-4xl md:text-5xl font-serif text-primary">Voices of Vision</h3>
+            <h2 className="text-[10px] md:text-sm font-bold uppercase tracking-[0.4em] text-accent mb-4">Leadership</h2>
+            <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-primary">Voices of Vision</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -161,7 +161,7 @@ export default function AboutPage() {
       <section id="facilities" className="py-20 md:py-32 px-6">
         <div className="max-w-[1400px] mx-auto text-center mb-16 md:mb-24">
           <h2 className="text-[10px] md:text-sm font-bold uppercase tracking-[0.4em] text-accent mb-4">Infrastructure</h2>
-          <h3 className="text-2xl md:text-5xl font-serif text-primary">World-Class Facilities</h3>
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-primary">World-Class Facilities</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-[1400px] mx-auto">
@@ -169,13 +169,13 @@ export default function AboutPage() {
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
-              className="p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-white border border-slate-100 hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 group"
+              className="p-6 sm:p-8 lg:p-10 mx-2 sm:mx-0 rounded-[2rem] sm:rounded-3xl bg-white border border-slate-100 hover:border-accent/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 group"
             >
               <div className="w-16 h-16 rounded-2xl bg-slate-50 text-black flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm">
                 {f.icon}
               </div>
-              <h4 className="text-lg sm:text-xl font-serif text-primary mb-4">{f.name}</h4>
-              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">{f.desc}</p>
+              <h4 className="text-xl sm:text-xl font-serif text-primary mb-4">{f.name}</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -187,17 +187,17 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="text-center mb-16 md:mb-24">
             <h2 className="text-[10px] md:text-sm font-bold uppercase tracking-[0.4em] text-accent/80 mb-4">Laurels</h2>
-            <h3 className="text-3xl md:text-5xl font-serif text-white leading-tight">Our Proud Achievements</h3>
+            <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif text-white leading-tight">Our Proud Achievements</h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {ACHIEVEMENTS.map((a, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-lg border border-white/10 p-5 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-[2.5rem] text-center group hover:bg-white/10 transition-all duration-500"
+                className="bg-white/5 backdrop-blur-lg border border-white/10 p-6 sm:p-8 lg:p-12 mx-2 sm:mx-0 rounded-[2rem] sm:rounded-[2.5rem] text-center group hover:bg-white/10 transition-all duration-500"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent/20 text-accent mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">
                   <Trophy size={32} className="md:w-10 md:h-10" />
